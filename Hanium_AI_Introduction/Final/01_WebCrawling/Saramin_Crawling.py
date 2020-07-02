@@ -72,7 +72,7 @@ if __name__ == '__main__':
     total_cnt = 0
     succeed_cnt = 0
     failed_cnt = 0
-    for page_num in tqdm(range(35001, 35126)):
+    for page_num in tqdm(range(0, 35126)):
         log_text = f'http://www.saramin.co.kr/zf_user/public-recruit/coverletter?real_seq={page_num}\n'
         try:
             introduction = crawling(page_num)
