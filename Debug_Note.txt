@@ -8,9 +8,13 @@
 출처:
 ==================================================================
 -------------------------------------------------- 에 러 목 록 ---------------------------------------------------
-
 warning: LF will be replaced by CRLF in
 The file will have its original line endings in your working directory.
+
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: f1695809059a1d9ad4572229f4727a25
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File Hanium_AI_Introduction/BackupShit/08_Web_Server/Install/mysql-8.0.19-winx64.zip is 187.80 MB; this exceeds GitHub's file size limit of 100.00 MB
 
 
 
@@ -24,14 +28,33 @@ The file will have its original line endings in your working directory.
 운영체제에 따라, 개행 문자를 나타내는 문자가 달라서 발생하는 경고
 윈도우는 CRLF 형식으로 개행 문자를 사용
 유닉스/리눅스 계열은 LF로 개행 문자를 사용
+개인혼자 사용 시 아래 해결방안으로도 상관없지만,
+팀원간 사용하는 운영체제가 다르면 아래 해결방안도 문제 발생할 수 있음
 
 해결방안:
 윈도우사용자
 git config --global core.autocrlf true
 리눅스/맥 사용자
 git config --global core.autocrlf true input
-팀원간 사용하는 운영체제가 다르면 문제 발생할 수 있음
-나만 쓰면 상관없겠지만 누구는 윈도우에서, 누구는 리눅스에서 쓴다하면
 
 출처: https://blog.jaeyoon.io/2018/01/git-crlf.html
+==================================================================
+에러:
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: f1695809059a1d9ad4572229f4727a25
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File Hanium_AI_Introduction/BackupShit/08_Web_Server/Install/mysql-8.0.19-winx64.zip is 187.80 MB; this exceeds GitHub's file size limit of 100.00 MB
+
+원인:
+Github에 100MB이상의 단일파일 commit을 시도한 경우 발생
+
+해결방법:
+git lfs install
+git lfs track "*.zip"		# 확장자가 zip인 모든 파일을 관리대상으로 선정, *대신 파일명 작성도 가능
+git add .gitattributes
+이미 100MB가 넘는 파일을 commit 했었기 때문에 같은 오류 발생
+100MB가 넘는 파일을 commit 했었던 것을 취소하고 다시 add, commit 후 push
+
+
+출처: https://velog.io/@wonhs717/Github-100MB%EA%B0%80-%EB%84%98%EB%8A%94-%ED%8C%8C%EC%9D%BC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0
 ==================================================================
