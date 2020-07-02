@@ -47,14 +47,31 @@ remote: error: File Hanium_AI_Introduction/BackupShit/08_Web_Server/Install/mysq
 
 원인:
 Github에 100MB이상의 단일파일 commit을 시도한 경우 발생
+일단 시도한 이상 100MB이상의 단일파일을 삭제하더라도
+이미 100MB가 넘는 파일이 commit log에 남기 때문에 같은 오류 발생
+100MB가 넘는 파일을 commit 했었던 것을 취소하고 다시 add, commit, push
+파일의 크기를 쪼개어 커밋하는 lfs를 사용하여야함.
 
 해결방법:
+1. 다음 사이트에서 bfg-x.xx.xx.jar을 .git이 존재하는 폴더에 다운로드
+https://rtyley.github.io/bfg-repo-cleaner/
+
+2. .git 폴더에서 다음 명령어를 실행, xx는 본인이 다운로드받은 버전
+java -jar bfg-x.xx.xx.jar --strip-blobs-bigger-than 100M
+
+3. 간혹 다음과 같은 에러가 발생하면 4번, 발생하지 않았다면 5번으로
+no large blobs matching criteria found in packfiles
+
+4. 다음 명령어를 실행 후 2번 명령어 다시 실행
+git repack && git gc
+java -jar bfg-x.xx.xx.jar --strip-blobs-bigger-than 100M
+
+5. 다음 명령어 실행
 git lfs install
-git lfs track "*.zip"		# 확장자가 zip인 모든 파일을 관리대상으로 선정, *대신 파일명 작성도 가능
-git add .gitattributes
-이미 100MB가 넘는 파일을 commit 했었기 때문에 같은 오류 발생
-100MB가 넘는 파일을 commit 했었던 것을 취소하고 다시 add, commit 후 push
+git lfs track "파일명.확장자명"
+git add .
+git commit -m "message"
+git push
 
-
-출처: https://velog.io/@wonhs717/Github-100MB%EA%B0%80-%EB%84%98%EB%8A%94-%ED%8C%8C%EC%9D%BC-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0
+출처: https://medium.com/@stargt/github%EC%97%90-100mb-%EC%9D%B4%EC%83%81%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95-9d9e6e3b94ef
 ==================================================================
