@@ -104,4 +104,4 @@
 [To. 이용준] [From. 조시훈] 크롤링한 데이터는 업로드 속도문제로 올리지 않았음, 필요한 데이터는
 [To. 이용준] [From. 조시훈] Final - 01_WebCrawling - cmd - python Saramin_Crawling.py 실행하면 생성될 것임
 
-[To. 이성찬] [From. 조시훈] Github PatchNote 사용법을 위한 테스트 완료
+[To. 조시훈] [From. 이성찬] Github PatchNote 사용법을 위한 테스트 완료
