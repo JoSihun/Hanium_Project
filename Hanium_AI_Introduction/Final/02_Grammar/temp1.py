@@ -1,9 +1,7 @@
-import os
+# 깔끔하게 출력되나 틀린부분이 단어단위가 아니라 문장단위로 출력됨
 from hanspell import spell_checker
 
-
 TEST_PATH = '../07_Saramin_dataset/testset'
-
 
 def grammar_check(text):
     result_text = ''

@@ -18,6 +18,7 @@ remote: error: File Hanium_AI_Introduction/BackupShit/08_Web_Server/Install/mysq
 
 no large blobs matching criteria found in packfiles
 
+파이썬에서 cmd콘솔 글자색 및 효과 지정하기
 -------------------------------------------------------------------------------------------------------------------
 ==================================================================
 에러:
@@ -74,4 +75,49 @@ git commit -m "message"
 git push
 
 출처: https://medium.com/@stargt/github%EC%97%90-100mb-%EC%9D%B4%EC%83%81%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%98%AC%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95-9d9e6e3b94ef
+==================================================================
+에러:
+파이썬에서 cmd콘솔 글자색 및 효과 지정하기
+
+원인:
+윈도우와 리눅스 콘솔 글자색 및 효과 지정하는 방법이 다름 주의
+
+해결방법:
+윈도우 콘솔관련 API 사용
+import ctypes
+import sys
+
+STD_INPUT_HANDLE   = -10
+STD_OUTPUT_HANDLE  = -11
+STD_ERROR_HANDLE   = -12
+ 
+FOREGROUND_BLACK     = 0x00
+FOREGROUND_BLUE      = 0x01 # text color contains blue.
+FOREGROUND_GREEN     = 0x02 # text color contains green.
+FOREGROUND_RED       = 0x04 # text color contains red.
+FOREGROUND_INTENSITY = 0x08 # text color is intensified.
+BACKGROUND_BLUE      = 0x10 # background color contains blue.
+BACKGROUND_GREEN     = 0x20 # background color contains green.
+BACKGROUND_RED       = 0x40 # background color contains red.
+BACKGROUND_INTENSITY = 0x80 # background color is intensified.
+
+std_out_handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
+ 
+def set_color(color, handle=std_out_handle):
+    bool = ctypes.windll.kernel32.SetConsoleTextAttribute(handle, color)
+    return bool
+
+sys.stdout.flush()
+set_color(FOREGROUND_RED)
+print(f'{original} ', end='')
+sys.stdout.flush()
+set_color(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE)
+
+print문 끝에 end=''가 없으면 그냥 set_color만 써도 되지만
+print문 끝에 end=''가 있으면 sys.stdout.flush()를 사용해야 정상적으로 컬러가 나오는 것으로 보아
+컬러 적용은 '\n' 문자에 의해 적용되는 것으로 추측됨
+->콘솔상에서 한 문장(기준: \n)에 한가지 글자색을 사용할 때는 set_color()만 사용해도 됨
+->콘솔상에서 한 문장(기준: \n)안에 여러가지 글자색을 사용할 때는 sys.stdout.flush()를 사용해야 함
+
+출처: http://parkjuwan.dothome.co.kr/wordpress/2017/06/25/text-color-windows-py/
 ==================================================================
