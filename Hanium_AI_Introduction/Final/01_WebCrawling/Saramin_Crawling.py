@@ -43,8 +43,19 @@ def crawling(page_num):
     boxes = soup.find_all("div", class_="box_ty3")
     for box in boxes:
         question = box.find_next('h3').text
-        index = box.text.find('글자수')
-        answer = box.text[:index].replace(question, '')
+        erase1 = box.find_next('div', class_='txt_byte').text  # 글자수 | bytes
+        erase2 = box.find_next('button', class_='btn_tsp_hide').text  # 접기
+
+        answer = box.text.replace(question, '')
+        answer = answer.replace(erase1, '')
+        answer = answer.replace(erase2, '')
+
+        if box.find_next('h4', class_='tsp_ty2'):
+            erase3 = box.find_next('h4', class_='tsp_ty2').text  # 첨삭결과
+            erase4 = box.find_next('p').text  # 첨삭내용
+            answer = answer.replace(erase3, '')
+            answer = answer.replace(erase4, '')
+
         contents += answer
     # print(contents)
 
@@ -83,9 +94,10 @@ if __name__ == '__main__':
             succeed_cnt += 1
             succeed_log.append(log_text)
 
-        except:
+        except Exception as e:
             failed_cnt += 1
             failed_log.append(log_text)
+            failed_log.append(e)
 
         finally:
             total_cnt += 1
