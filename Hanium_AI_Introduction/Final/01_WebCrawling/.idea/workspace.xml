@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d36f8d85-4ad0-45d5-993d-d5ecdf0e0b24" name="Default Changelist" comment="" />
+    <list default="true" id="d36f8d85-4ad0-45d5-993d-d5ecdf0e0b24" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Document/[01]_한이음 산출물양식/[3차] 02.인공지능 자기소개서 분석_WBS_v0.1_20200420.xls" beforeDir="false" afterPath="$PROJECT_DIR$/../../Document/[01]_한이음 산출물양식/[3차] 02.인공지능 자기소개서 분석_WBS_v0.1_20200420.xls" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1594193175990</updated>
       <workItem from="1594205048542" duration="634000" />
+      <workItem from="1594546322782" duration="65000" />
     </task>
     <servers />
   </component>

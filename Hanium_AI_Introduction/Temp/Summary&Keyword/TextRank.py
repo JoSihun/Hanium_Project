@@ -11,9 +11,8 @@ class SentenceTokenizer(object):
     def __init__(self):
         self.kkma = Kkma()
         self.twitter = Twitter()
-        #self.stopwords = ['중인' ,'만큼', '마찬가지', '꼬집었', "연합뉴스", "데일리", "동아일보", "중앙일보", "조선일보", "기자"
-        #,"아", "휴", "아이구", "아이쿠", "아이고", "어", "나", "우리", "저희", "따라", "의해", "을", "를", "에", "의", "가", "이기"]
-        self.stopwords = ['이기','대해','때문','여러','위해','대한','통해']   # 나오면 안되는 단어들 적어줘야함
+        self.stopwords = ['이기','대해','때문','여러','위해','대한','통해','로서','전반','한번','관련','또한','통한','우선','이후',
+                          '그것','동안']   # 나오면 안되는 단어들 적어줘야함
     def url2sentences(self, url):
         article = Article(url, language='ko')
         article.download()
@@ -38,7 +37,7 @@ class SentenceTokenizer(object):
         for sentence in sentences:
             if sentence is not '':
                 nouns.append(' '.join([noun for noun in self.twitter.nouns(str(sentence))
-                                if noun not in self.stopwords and len(noun) > 1])) # 한글자 이상만
+                                if noun not in self.stopwords and len(noun) > 1])) # 키워드로 추출할 글자개수 정해줄수있음(현재 2개이상)
         return nouns
 
 
@@ -114,13 +113,19 @@ class TextRank(object):
         return keywords
 
 ####################################################################################################################################
+corporate_dict = {}
+task_dict = {}
+
 Path = '../../Final/07_Saramin_dataset/dataset'
 for i in range(10):
     f = open(f'{Path}/{i}.txt', 'r', encoding='utf-8')
-    intro_data = f.read()
-    textrank = TextRank(intro_data)     # 매개변수로 url주소와 텍스트를 넣을수가 있음
-    for row in textrank.summarize(6):   # 안에 숫자는 몇줄로 요약 할것인가
+    intro_data_list = f.readlines()
+    intro_data_str = intro_data_list[2:]    # 기업명과 부서제외
+    intro_data_str = '\n'.join(intro_data_str)
+
+    textrank = TextRank(intro_data_str)     # 매개변수로 url주소와 텍스트를 넣을수가 있음
+    for row in textrank.summarize(6):   # 몇줄로 요약 할것인지 지정할수 있음(현재 6줄)
         print(row)
         print()
-    print('keywords :',textrank.keywords(10))   # textrank.keywords()의 매개변수로 키워드 개수를 지정
+    print('keywords :',textrank.keywords(10))   # 키워드 개수를 지정할수 있음(현재 10개)
     print('=======================================================================================================================================')
