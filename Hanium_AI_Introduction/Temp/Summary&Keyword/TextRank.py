@@ -1,4 +1,5 @@
 # 참고 : https://excelsior-cjh.tistory.com/93
+# 참고 : https://korbillgates.tistory.com/171
 from newspaper import Article
 from konlpy.tag import Kkma
 from konlpy.tag import Twitter
@@ -113,19 +114,45 @@ class TextRank(object):
         return keywords
 
 ####################################################################################################################################
+corpor_field_dict = {}
 corporate_dict = {}
-task_dict = {}
+field_dict = {}
 
 Path = '../../Final/07_Saramin_dataset/dataset'
-for i in range(10):
+for i in range(6585):   # 총 자소서 6585개
     f = open(f'{Path}/{i}.txt', 'r', encoding='utf-8')
     intro_data_list = f.readlines()
     intro_data_str = intro_data_list[2:]    # 기업명과 부서제외
     intro_data_str = '\n'.join(intro_data_str)
 
-    textrank = TextRank(intro_data_str)     # 매개변수로 url주소와 텍스트를 넣을수가 있음
-    for row in textrank.summarize(6):   # 몇줄로 요약 할것인지 지정할수 있음(현재 6줄)
-        print(row)
-        print()
-    print('keywords :',textrank.keywords(10))   # 키워드 개수를 지정할수 있음(현재 10개)
-    print('=======================================================================================================================================')
+    corporate_name = intro_data_list[0].replace('㈜','').replace('(주)','')   # 특정문자 제거
+    corporate_name = corporate_name[:len(corporate_name)-1]                  # \n제거
+    field_name = intro_data_list[1][:len(intro_data_list[1])-1]              # \n제거
+
+    # 기업 분류 and 기업&분야 분류
+    if corporate_name in corporate_dict:
+        corporate_dict[corporate_name] += 1
+        if field_name not in corpor_field_dict[corporate_name]:
+            corpor_field_dict[corporate_name].append(field_name)
+    else:
+        corporate_dict[corporate_name] = 1
+        corpor_field_dict[corporate_name] = [field_name]
+
+    # 분야 분류
+    if field_name in field_dict:
+        field_dict[field_name] += 1
+    else:
+        field_dict[field_name] = 1
+
+
+    #textrank = TextRank(intro_data_str)     # 매개변수로 url주소와 텍스트를 넣을수가 있음
+    #for row in textrank.summarize(6):   # 몇줄로 요약 할것인지 지정할수 있음(현재 6줄)
+    #    print(row)
+    #    print()
+    #print('keywords :',textrank.keywords(10))   # 키워드 개수를 지정할수 있음(현재 10개)
+    #print('=======================================================================================================================================')
+print(f"기업 : {corporate_dict}")
+print(f"총 기업개수 : {len(corporate_dict)}")
+print(f"분야 : {field_dict}")
+print(f"총 분야개수 : {len(field_dict)}")
+print(f"기업별 분야 : {corpor_field_dict}")
