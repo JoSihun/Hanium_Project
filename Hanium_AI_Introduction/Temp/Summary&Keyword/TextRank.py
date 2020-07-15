@@ -119,7 +119,7 @@ corporate_dict = {}
 field_dict = {}
 
 Path = '../../Final/07_Saramin_dataset/dataset'
-for i in range(6585):   # 총 자소서 6585개
+for i in range(6586):   # 총 자소서 6586개
     f = open(f'{Path}/{i}.txt', 'r', encoding='utf-8')
     intro_data_list = f.readlines()
     intro_data_str = intro_data_list[2:]    # 기업명과 부서제외
@@ -144,15 +144,17 @@ for i in range(6585):   # 총 자소서 6585개
     else:
         field_dict[field_name] = 1
 
-
-    #textrank = TextRank(intro_data_str)     # 매개변수로 url주소와 텍스트를 넣을수가 있음
+    print(f"{i}.txt파일 탐색중")
+    textrank = TextRank(intro_data_str)     # 매개변수로 url주소와 텍스트를 넣을수가 있음
     #for row in textrank.summarize(6):   # 몇줄로 요약 할것인지 지정할수 있음(현재 6줄)
     #    print(row)
     #    print()
     #print('keywords :',textrank.keywords(10))   # 키워드 개수를 지정할수 있음(현재 10개)
     #print('=======================================================================================================================================')
+"""
 print(f"기업 : {corporate_dict}")
 print(f"총 기업개수 : {len(corporate_dict)}")
 print(f"분야 : {field_dict}")
 print(f"총 분야개수 : {len(field_dict)}")
 print(f"기업별 분야 : {corpor_field_dict}")
+"""
