@@ -78,41 +78,49 @@ def text_normalization(text):
 if __name__ == '__main__':
     createFolder(DATA_PATH)
 
-    succeed_log = ['Succeed Log:\n']
-    failed_log = ['Failed Log:\n']
+    #succeed_log = ['Succeed Log:\n']
+    #failed_log = ['Failed Log:\n']
     total_cnt = 0
     succeed_cnt = 0
     failed_cnt = 0
-    for page_num in tqdm(range(0, 35126)):
+    if os.path.exists(f'{BASE_PATH}/Crawling_Succeed_log.txt'):
+        os.remove(f'{BASE_PATH}/Crawling_Succeed_log.txt')
+    if os.path.exists(f'{BASE_PATH}/Crawling_Failed_log.txt'):
+        os.remove(f'{BASE_PATH}/Crawling_Failed_log.txt')
+    for page_num in range(0, 35126):
         log_text = f'http://www.saramin.co.kr/zf_user/public-recruit/coverletter?real_seq={page_num}\n'
         try:
             introduction = crawling(page_num)
-            fp = open(f'{DATA_PATH}/{succeed_cnt}.txt', 'w', encoding='UTF-8')
-            fp.write(introduction)
-            fp.close()
+            fp1 = open(f'{DATA_PATH}/{succeed_cnt}.txt', 'w', encoding='UTF-8')
+            fp1.write(introduction)
+            fp1.close()
 
             succeed_cnt += 1
-            succeed_log.append(log_text)
+            fp2 = open(f'{BASE_PATH}/Crawling_Succeed_log.txt', 'a', encoding='UTF-8')
+            fp2.write(log_text)
+            fp2.close()
 
         except Exception as e:
             failed_cnt += 1
-            failed_log.append(log_text)
-            failed_log.append(e)
+            fp3 = open(f'{BASE_PATH}/Crawling_Failed_log.txt', 'a', encoding='UTF-8')
+            fp3.write(log_text)
+            fp3.write(str(e) + '\n')
+            fp3.close()
 
         finally:
             total_cnt += 1
 
-        #print('===================================================================================================')
-        #print('Total Try: ', total_cnt)
-        #print('Succeed: ', succeed_cnt)
-        #print('Failed: ', failed_cnt)
+        print('===================================================================================================')
+        print('Total Try: ', total_cnt)
+        print('Succeed: ', succeed_cnt)
+        print('Failed: ', failed_cnt)
 
     result_log = f'Total Try: {total_cnt}\n' \
                  f'Succeed: {succeed_cnt}\n' \
                  f'Failed: {failed_cnt}\n'
     print(result_log)
-    fp = open(f'{BASE_PATH}/Crawling_log.txt', 'w', encoding='UTF-8')
-    fp.write(result_log + '\n')
-    fp.write(''.join(succeed_log) + '\n')
-    fp.write(''.join(failed_log))
-    fp.close()
+    fp4 = open(f'{BASE_PATH}/Crawling_Result_log.txt', 'w', encoding='UTF-8')
+    fp4.write(result_log + '\n')
+    #fp.write(''.join(succeed_log) + '\n')
+    #fp.write(''.join(failed_log))
+    fp4.close()
