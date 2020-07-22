@@ -89,7 +89,8 @@ if __name__ == '__main__':
     text_file_name = f'{TEST_PATH}/test.txt'
 
     origin_text = open(text_file_name, 'r', encoding='UTF-8').read()
-    origin_list, result_list = grammar_check(origin_text)
+    origin_list, result_list = grammar_
+    check(origin_text)
     print(f'------------------------------------------------- 원본 텍스트 -------------------------------------------------')
     print_wrong_text(origin_list, result_list)
     print(f'------------------------------------------------- 첨삭된 텍스트 -------------------------------------------------')

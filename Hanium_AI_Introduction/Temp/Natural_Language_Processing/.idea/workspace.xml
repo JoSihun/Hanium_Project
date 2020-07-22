@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b87599e5-a484-4246-befc-df8ce2f095e3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ezGTQSBtcqi0aCmFXzm0r2GqI2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+  </component>
+  <component name="RunManager" selected="Python.stop_word">
+    <configuration name="stop_word" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NLP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stop_word.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tokenization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NLP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tokenization.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.stop_word" />
+        <item itemvalue="Python.tokenization" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b87599e5-a484-4246-befc-df8ce2f095e3" name="Default Changelist" comment="" />
+      <created>1595317014765</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595317014765</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="822" height="181" key="GridCell.Tab.0.bottom" timestamp="1595327196789">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="822" height="181" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595327196789" />
+    <state width="822" height="181" key="GridCell.Tab.0.center" timestamp="1595327196789">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="822" height="181" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595327196789" />
+    <state width="822" height="181" key="GridCell.Tab.0.left" timestamp="1595327196789">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="822" height="181" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595327196789" />
+    <state width="822" height="181" key="GridCell.Tab.0.right" timestamp="1595327196789">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="822" height="181" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595327196789" />
+    <state x="505" y="95" key="SettingsEditor" timestamp="1595319822741">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="505" y="95" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595319822741" />
+    <state x="903" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1595382541194">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="903" y="240" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1595382541194" />
+    <state x="703" y="0" width="729" height="583" key="dock-window-1" timestamp="1595317288234">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="703" y="0" width="729" height="583" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1595317288234" />
+    <state x="619" y="0" width="729" height="583" key="dock-window-2" timestamp="1595317364465">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="619" y="0" width="729" height="583" key="dock-window-2/0.0.1536.824@0.0.1536.824" timestamp="1595317364465" />
+    <state x="278" y="110" width="756" height="830" key="dock-window-3" timestamp="1595382573817">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="278" y="110" width="756" height="830" key="dock-window-3/0.0.1536.824@0.0.1536.824" timestamp="1595382573817" />
+    <state x="342" y="28" width="814" height="830" key="dock-window-4" timestamp="1595317471363">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="342" y="28" width="814" height="830" key="dock-window-4/0.0.1536.824@0.0.1536.824" timestamp="1595317471363" />
+    <state x="583" y="0" width="785" height="830" key="dock-window-5" timestamp="1595319731669">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="583" y="0" width="785" height="830" key="dock-window-5/0.0.1536.824@0.0.1536.824" timestamp="1595319731669" />
+    <state x="56" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595323543579">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="56" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1595323543579" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://C:/Hanium_Project/Hanium_AI_Introduction/Final/02_Grammar/Grammar.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
