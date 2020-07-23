@@ -40,7 +40,7 @@ def print_plagiarism_result(highest_file_path, highest_similarity, highest_intro
 ########################################################################################################################
 def run():
     # 백엔드 연결 후 user_path 부분만 수정
-    user_path = f'../07_Saramin_dataset/user/answer/test.txt'
-    compare_path = f'../07_Saramin_dataset/whole/answer'
+    user_path = f'..Final\\07_Saramin_dataset\\testset\\test.txt'
+    compare_path = f'..Final\\07_Saramin_dataset\\dataset'
     plagiarism_check(user_path, compare_path)
 run()

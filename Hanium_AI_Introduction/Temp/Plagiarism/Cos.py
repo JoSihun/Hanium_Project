@@ -14,8 +14,8 @@ def cos_similarity(v1, v2):
 
 
 def run():
-    user_path = f'C:\\Users\\82103\\Desktop\\project\\Hanium_Project\\Hanium_AI_Introduction\\BackupShit\\07_Saramin_dataset\\test.txt'
-    compare_path = f'C:\\Users\\82103\\Desktop\\project\\Hanium_Project\\Hanium_AI_Introduction\\Final\\07_Saramin_dataset\\dataset'
+    user_path = f'..Final\\07_Saramin_dataset\\testset\\test.txt'
+    compare_path = f'..Final\\07_Saramin_dataset\\dataset'
     plagiarism_check(user_path, compare_path)
 
 
