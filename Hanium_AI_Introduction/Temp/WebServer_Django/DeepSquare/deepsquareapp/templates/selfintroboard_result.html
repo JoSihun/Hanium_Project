@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+ <div class="masthead ">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12 col-xs-12 mx-auto">
+                 <h1 class="text-center">자기소개서 분석 결과</h1>
+                 <br><br><br>
+                 <table class="table">
+                     <thead style="white-space:nowrap;">
+                     <tr>
+                         <th scope="col">번호 : {{post.id}}</th>
+                         <th>작성일 : {{post.registered_date}}</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">제목</th>
+                         <td>{{post.title}}</td>
+                     </tr>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">기업</th>
+                         <td>{{post.company_name}}</td>
+                     </tr>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">직무</th>
+                         <td>{{post.department_name}}</td>
+                     </tr>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">내용</th>
+                         <!--td>{{post.contents}}</td-->
+                         <td>
+                             {% for result in grammar_result.result_list %}
+                                {% if result.0 == result.1 %}
+                                    <span style="color:black">{{ result.0 | linebreaksbr }}</span>
+                                {% else %}
+                                    <span style="color:red">{{ result.0 | linebreaksbr }}</span>
+                                {% endif %}
+                             {% endfor %}
+                         </td>
+                     </tr>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">맞춤법 검사</th>
+                         <!--td>{{grammar_check}}</td-->
+                         <td>
+                             {% for result in grammar_result.result_list %}
+                                {% if result.0 == result.1 %}
+                                    <span style="color:black">{{ result.1 | linebreaksbr }}</span>
+                                {% else %}
+                                    <span style="color:blue">{{ result.1 | linebreaksbr }}</span>
+                                {% endif %}
+                             {% endfor %}
+                         </td>
+                     </tr>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">표절률</th>
+                         <td>{{plagiarism_percent}}%</td>
+                     </tr>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">적합률</th>
+                         <td>{{keyword_percent}}%</td>
+                     </tr>
+                     <tr>
+                         <th scope="row" style="white-space:nowrap;">첨삭 결과</th>
+                         <td>{{comment}}</td>
+                     </tr>
+                     </tbody>
+                 </table>
+                 <br><br>
+                 <div class="text-center">
+                     <button type = "button" class = "btn btn-xl btn-outline-dark" onclick = "location.href = '/'"><i class="fas fa-home"></i>&nbsp;&nbsp;HOME</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock content %}

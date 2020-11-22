@@ -1,0 +1,58 @@
+{% extends "app/base_my.html" %}
+
+{% block content %}
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-xs-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="paenl-title">
+                            &nbsp;<span class="fas fa-edit"></span>
+                            &nbsp;<font size="4">내 자기소개서</font>
+                        </h3>
+                    </div>
+                    <p>
+                    <div class="panel-body"></div>
+                    <div class = "row mt-5">
+                        <div class = "col-12">
+                            <div class = "form-group">
+                                <label for = "title">제목</label>
+                                <input style="background-color: #FFFFFF;" type = "text" class = "form-control" id = "title" value = "{{self_intro.title}}" readonly>
+                                <hr>
+                                <label for = "question">question 1</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="2"readonly>{{self_intro.question_1}}</textarea>
+                                <label for = "Answer">Answer 1</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="10" readonly>{{self_intro.answer_1}}</textarea>
+                                <hr>
+                                <label for = "question">question 2</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="2"readonly>{{self_intro.question_2}}</textarea>
+                                <label for = "Answer">Answer 2</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="10" readonly>{{self_intro.answer_2}}</textarea>
+                                <hr>
+                                <label for = "question">question 3</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="2"readonly>{{self_intro.question_3}}</textarea>
+                                <label for = "Answer">Answer 3</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="10" readonly>{{self_intro.answer_3}}</textarea>
+                                <hr>
+                                <label for = "question">question 4</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="2"readonly>{{self_intro.question_4}}</textarea>
+                                <label for = "Answer">Answer 4</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="10" readonly>{{self_intro.answer_4}}</textarea>
+                                <hr>
+                                <label for = "question">question 5</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="2"readonly>{{self_intro.question_5}}</textarea>
+                                <label for = "Answer">Answer 5</label>
+                                <textarea style="background-color: #FFFFFF;" class ="form-control" rows="10" readonly>{{self_intro.answer_5}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                    <br>
+                    <button type = "button" class = "btn btn-primary" onclick = "location.href = '/myintro'">돌아가기</button>
+                    <a class="btn btn-outline-dark" style="float: right;" href="/myintro/edit/{{self_intro.id}}"><i class="fas fa-pen"></i>&nbsp;수정</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

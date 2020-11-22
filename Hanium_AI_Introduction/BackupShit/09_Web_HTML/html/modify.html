@@ -1,0 +1,50 @@
+{% extends "app/base_my.html" %}
+
+{% block content %}
+                <br>
+               <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8 col-xs-8">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="paenl-title">
+                                        &nbsp;<span class="fas fa-edit"></span>
+                                        &nbsp;<font size="4">비밀번호 변경</font>
+                                    </h3>
+                                </div>
+                                <br>
+                                <div class="panel-body">
+                                    <tbody>
+                                    <form action="" method="POST" encType="multiplart/form-data">
+                                        {% csrf_token %}
+                                        <tr>
+                                            <th>현재 비밀번호</th>
+                                            <td><input type="password" placeholder="My Password" name="password" class="form-control"/></td>
+                                        </tr>
+                                        <br>
+                                        <tr>
+                                            <th>변경할 비밀번호</th>
+                                            <td><input type="password" placeholder="Password" name="change_password" class="form-control"/></td>
+                                        </tr>
+                                        <br>
+                                        <tr>
+                                            <th>비밀번호 확인</th>
+                                            <td><input type="password" placeholder="Password Confirm" name="re_change_password" class="form-control"/></td>
+                                        </tr>
+                                        <div class = "col-10" style="color:red">
+                                            {{ error }}
+                                        </div>
+                                        <br>
+                                        <tr>
+                                            <td colspan="2">
+                                                <button type = "submit" class = "btn btn-primary">비밀번호 변경</button>
+                                            </td>
+                                        </tr>
+                                    </form>
+                                    </tbody>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock content %}

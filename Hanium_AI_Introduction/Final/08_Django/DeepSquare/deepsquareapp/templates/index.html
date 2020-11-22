@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="/static/assets/img/robot.png" alt="" />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">Deep Square</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">AI Self-Introduction Analyzer</p><br>
+                <!--<a href="/self_intro/" class="btn btn-xl active btn-outline-light" role="button" aria-pressed="true">START</a>-->
+                {% if request.session.user %}
+                <a href="/selfintroboard_writing" class="btn btn-xl active btn-outline-light" role="button" aria-pressed="true">START</a>
+                {% else %}
+                <a href="/login" class="btn btn-xl active btn-outline-light" role="button" aria-pressed="true">START</a>
+                {% endif %}
+            </div>
+        </header>
+
+        <!-- Introduce Section-->
+        <section class="page-section introduce" id="Introduce">
+            <div class="container">
+                <!-- Introduce Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Introduce</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Introduce Grid Items-->
+                <div class="row">
+                    <!-- Introduce Item 1-->
+                    <div class="col-md-4 col-lg-4 col-sm-4 mb-5" style="text-align : center;">
+                        <div class="introduce-item mx-auto" data-toggle="modal" data-target="#introduceModal1">
+                            <div class="introduce-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="introduce-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="/static/assets/img/WhatisDeepSquare.png" alt="" />
+                        </div>
+                    </div>
+                    <!-- Introduce Item 2-->
+                    <div class="col-md-4 col-lg-4 col-sm-4 mb-5" style="text-align : center;">
+                        <div class="introduce-item mx-auto" data-toggle="modal" data-target="#introduceModal2">
+                            <div class="introduce-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="introduce-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="/static/assets/img/Process.png" alt="" />
+                        </div>
+                    </div>
+                    <!-- introduce Item 3-->
+                    <div class="col-md-4 col-lg-4 col-sm-4 mb-5" style="text-align : center;">
+                        <div class="introduce-item mx-auto" data-toggle="modal" data-target="#introduceModal3">
+                            <div class="introduce-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="introduce-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="/static/assets/img/IntroductionOfDevelopers.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start Deep Square Section-->
+        <section class="page-section bg-primary text-white mb-0" id="StartDeepSquare">
+            <div class="container">
+                <!-- Start Deep Square Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white">Start Deep Square</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Start Deep Square Section Content-->
+                <div class="row">
+                    <div class="col-lg-4 col-sm-9 mx-auto"><p class="lead">인공지능을 이용한 자기소개서 분석!<br>지금 바로 시작해보세요!</p></div>
+                </div>
+                <!-- Start Deep Square Section Button-->
+                <div class="text-center mt-4">
+                   <a href="/selfintroboard_writing" class="btn btn-xl active btn-outline-light" role="button" aria-pressed="true">START</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section-->
+        <section class="page-section" id="Community">
+            <div class="container">
+                <!-- Community Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Community</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Community Section Form-->
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="text-center">
+                            <br><br>
+                            <button type = "button" class = "btn btn-xl btn-outline-dark" onclick= "location.href = '/freeboard'">자유게시판</button>&emsp;&emsp;
+                            <button type = "button" class = "btn btn-xl btn-outline-dark" onclick= "location.href = '/questionboard'">Q & A</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- introduce Modals-->
+        <!-- introduce Modal 1-->
+        <div class="introduce-modal modal fade" id="introduceModal1" tabindex="-1" role="dialog" aria-labelledby="introduceModal1Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="ture"><i class="fas fa-times"></i></span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- introduce Modal - Title-->
+                                    <h2 class="introduce-modal-title text-secondary text-uppercase mb-0" id="introduceModal1Label">What is Deep Square?</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- introduce Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" alt="" />
+                                    <!-- introduce Modal - Text-->
+                                    <p class="mb-5">Deep Square는 인공지능(AI)을 통해 자기소개서를 분석하여 지원 회사 또는 직무에 적합하게 작성되었는지 검토해줍니다. 자기소개서의 맞춤법 검사, 표절 여부 검증, 첨삭, 합격 예측 등의 기능이 있습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- introduce Modal 2-->
+        <div class="introduce-modal modal fade" id="introduceModal2" tabindex="-1" role="dialog" aria-labelledby="introduceModal2Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="ture"><i class="fas fa-times"></i></span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- introduce Modal - Title-->
+                                    <h2 class="introduce-modal-title text-secondary text-uppercase mb-0" id="introduceModal2Label">Process</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- introduce Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/1.png" alt="" /><p>STEP 1. 제목 작성</p><br>
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/4.png" alt="" /><p>STEP 2. 기업 선택</p><br>
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/3.png" alt="" /><p>STEP 3. 직무 분야 작성</p><br>
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/5.png" alt="" /><p>STEP 4. 내용 작성</p><br>
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/6.png" alt="" /><p>STEP 5. 결과확인</p><br>
+
+                                    <!-- introduce Modal - Text-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- introduce Modal 3-->
+        <div class="introduce-modal modal fade" id="introduceModal3" tabindex="-1" role="dialog" aria-labelledby="introduceModal3Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="ture"><i class="fas fa-times"></i></span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- introduce Modal - Title-->
+                                    <h2 class="introduce-modal-title text-secondary text-uppercase mb-0" id="introduceModal3Label">Introduction of Developers</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- introduce Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/sihun.jpg" alt="" /><p>조시훈 (팀장) / 1997-08-23 / 서경대학교 컴퓨터공학과</p><br>
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/dongmin.jpg" alt="" /><p>조동민 (팀원) / 1996-11-05 / 서경대학교 컴퓨터공학과</p><br>
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/sungchan.jpg" alt="" /><p>이성찬 (팀원) / 1996-06-05 / 서경대학교 컴퓨터공학과</p><br>
+                                    <img class="img-fluid rounded mb-5" src="/static/assets/img/yongjun.jpg" alt="" /><p>이용준 (팀원) / 1997-03-10 / 서경대학교 컴퓨터공학과</p><br>
+                                    <!-- introduce Modal - Text-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

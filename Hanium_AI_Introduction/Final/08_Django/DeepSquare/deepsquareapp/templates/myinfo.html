@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/new_main.css" rel="stylesheet">
+
+<!-- FreeBoard-->
+<div class="masthead ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-xs-10 mx-auto">
+                <div class="panel panel-primary">
+                    <h1 class="panel-heading">마이페이지</h1>
+                    <hr><br><br><br>
+
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                                    <h5 class="mb-0" style="color: black">내 정보&nbsp;<i class="fas fa-angle-down rotate-icon"></i></h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead style="white-space:nowrap;" class="thead">
+                                        <tr>
+                                            <th scope="col"><h5>기본정보</h5></th>
+                                            <th scope="col"></th>
+                                            <th scope="col"><a class="btn" style="float: right; color:green;" href="#"><i class="fas fa-pen"></i>&nbsp; 수정</a></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="white-space:nowrap;">
+                                            <th scope="row">아이디</th>
+                                            <td>{{ username }}</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr style="white-space:nowrap;">
+                                            <th scope="row">이름</th>
+                                            <td>#</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr style="white-space:nowrap;">
+                                            <th scope="row">이메일</th>
+                                            <td>#</td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Accordion card -->
+
+                    <div class="accordion md-accordion" id="accordionEx2" role="tablist" aria-multiselectable="true">
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header" role="tab" id="headingTwo2">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                                    <h5 class="mb-0" style="color: black">내 자기소개서 목록&nbsp;<i class="fas fa-angle-down rotate-icon"></i></h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <thead style="white-space:nowrap;">
+                                        <tr>
+                                            <th scope="col">번호</th>
+                                            <th scope="col">제목</th>
+                                            <th scope="col">작성자</th>
+                                            <th scope="col">작성일</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for post in posts %}
+                                            <tr style="white-space:nowrap;" onclick = "location.href = '/selfintroboard_post/{{post.id}}'">
+                                                <td>{{post.id}}</td>
+                                                <td>{{post.title}}</td>
+                                                <td>{{post.name}}</td>
+                                                <td nowrap>{{post.registered_date}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col">
+                                            <ul class="pagination justify-content-center">
+                                                {% if posts.has_previous %}
+                                                    <li class = "page-item"><a class = "page-link" style="border-color: lightgray; color:black;" href = "?p={{posts.previous_page_number}}"><i class="fas fa-angle-left"></i></a></li>
+                                                {% else %}
+                                                    <li class = "page-item disabled"><a class = "page-link disabled" style="border-color: lightgray; color:gray;" href = "#"><i class="fas fa-angle-left"></i></a></li>
+                                                {% endif %}
+                                                <li class = "page-item active"><a class = "page-link" style="border-color: lightgray; background-color: white; color:black;">{{posts.number}}/{{posts.paginator.num_pages}}</a></li>
+                                                {% if posts.has_next %}
+                                                    <li class = "page-item"><a class = "page-link" style="border-color: lightgray; color:black;" href = "?p={{posts.next_page_number}}"><i class="fas fa-angle-right"></i></a></li>
+                                                {% else %}
+                                                    <li class = "page-item disabled"><a class = "page-link disabled" style="border-color: lightgray; color:gray;" href = "#"><i class="fas fa-angle-right"></i></a></li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Accordion card -->
+
+                    <div class="accordion md-accordion" id="accordionEx3" role="tablist" aria-multiselectable="true">
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header" role="tab" id="headingThree3">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
+                                    <h5 class="mb-0" style="color:black">분석 결과&nbsp;<i class="fas fa-angle-down rotate-icon"></i></h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
+                                <div class="card-body">
+                                    <canvas id="doughnutChart"></canvas>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                    </div>
+                    <!-- Accordion wrapper -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

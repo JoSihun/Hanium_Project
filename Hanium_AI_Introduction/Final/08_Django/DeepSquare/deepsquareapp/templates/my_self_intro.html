@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+ <div class="masthead ">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12 col-xs-12 mx-auto">
+                 <h1>내 자기소개서</h1>
+                 <br><br>
+                     <div class="form-group">
+                         <label for="title"><h4>제목</h4></label>
+                         <input style="background-color: #FFFFFF;" id="title" type="text"  class="form-control form-control-lg input-block"  value = "{{post.title}}" readonly>
+                     </div>
+                     <br>
+                     <div class="form-group">
+                        <label for="company_name"><h4>기업 선택</h4></label>
+                         <br>
+                         <input style="background-color: #FFFFFF;" id="company_name"  type="text" class="form-control form-control-lg input-block" value="{{post.company_name}}" readonly>
+                    </div>
+                     <br>
+                     <div class="form-group">
+                         <label for="department_name"><h4>직무 분야</h4></label>
+                         <input style="background-color: #FFFFFF;" id="department_name" type="text" class="form-control form-control-lg input-block" value="{{post.department_name}}" readonly>
+                     </div>
+                     <br>
+                     <div class="form-group">
+                         <label for="contents"><h4>내용 작성</h4></label>
+                         <textarea cols="10" rows="20" style="background-color: #FFFFFF;" id="contents" class="form-control form-control-lg input-block" readonly>{{post.contents}}</textarea>
+                     </div>
+                     <br><br>
+                     <button type = "button" class = "btn btn-lg btn-outline-dark" onclick = "location.href = '/'"><i class="fas fa-angle-left"></i>&nbsp;&nbsp;이전</button>
+                     <button type = "submit" class = "btn btn-lg btn-outline-success" style="float: right;" onclick = "location.href = '/self_intro_save/'">저장</button>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock content %}

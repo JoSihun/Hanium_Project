@@ -1,0 +1,58 @@
+기본개념 (Jupyter Notebook 사용)
+
+ssh 프로토콜을 사용하여 서버 접속
+
+Linux = Ubuntu 기반 터미널 환경으로 처리해야하나
+익숙하지 않으므로 Jupyter Notebook을 설치하여 사용
+
+인스턴스 생성시 - 방화벽설정 - HTTP 80 / HTTPS 443 포트 설정해야함
+
+==================================================================
+인스턴스 생성 (Putty 사용)
+
+1) 인스턴스 시작 (리전 서울 선택)
+2) Ubuntu AMI 선택
+3) 키페어 생성 및 선택 (ssh 프로토콜 접속에 사용)
+
+==================================================================
+서버접속 #1 (Putty 사용, ssh 프로토콜)
+1) 키페어 변환 (.pem 파일, puttygen을 통해 .ppk 파일로 변경)
+2) Putty - Session - HostName - AWS콘솔의 퍼블릭DNS 입력
+3) Putty - Connection - SSH - Auth - Browse - 생성한 ppk파일 열기 - Open
+4) 터미널로 접속됨
+
+서버접속 #2 (Jetbrains사 PHP Storm CLI 사용)
+FTP, SMTP (FTP에서 보안추가?)
+
+# 참고자료
+PHP Storm 사용, FTP 프로토콜 사용:
+https://tristan91.tistory.com/334
+
+FileZilla 사용, FTP 프로토콜 사용:
+https://luji.tistory.com/9
+
+==================================================================
+IP와 도메인 연결
+
+AWS ROUTE 53 CNAME 별칭 레코드 만들기 (포트 연결?)
+Freenom 12개월 무료도메인 
+
+CNAME : 대체 도메인 이름
+
+# 참고자료
+AWS ROUTE 53 CNAME 별칭 레코드 만들기:
+https://aws.amazon.com/ko/premiumsupport/knowledge-center/route-53-create-alias-records/
+==================================================================
+Let's Encrypt 인증발급
+
+HTTPS를 사용하기 위해서는
+인증기관(Let's Encrypt)에서 SSL 인증서를 발급받아야 함.
+
+==================================================================
+# 기타참고자료
+
+서버연결에 관한 글:
+https://jungeun960.tistory.com/
+
+Docker :
+https://www.youtube.com/watch?v=HbKCxBFT2wk&list=PLRx0vPvlEmdChjc6N3JnLaX-Gihh5pHcx

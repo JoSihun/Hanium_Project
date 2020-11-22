@@ -1,0 +1,58 @@
+Django 관리자 계정 생성 및 데이터베이스 테이블 연결
+
+1) Django 관리자 계정 생성
+$ python manage.py createsuperuser
+ID = admin
+Pw = 0000
+
+2) models.py 추가하면 admin.py도 추가 후 makemigrations, migrate
+$ python manage.py makemigrations
+$ python manage.py migrate
+
+3) 관리자에 테이블 연결하기 admin.py 설정
+from .models import 테이블명
+admin.site.register(테이블명)
+
+# 참고자료
+Django - Admin 페이지 사용해보기:
+https://doorbw.tistory.com/184
+
+==================================================================
+1) 장고 DB 데이터 삽입
+data = 테이블명(컬럼명1='데이터1', 컬럼명='데이터2')
+data.save()
+
+2) 장고 DB 데이터 조회
+value = Post.objects.all()
+    for v in value:
+        print(v.name)
+
+value = get_object_or_404(테이블이름, pk=pk)
+
+3) 장고 DB 데이터 삭제
+value = Post.objects.all()
+    for v in value:
+        v.delete
+
+4) 장고 DB 데이터 업데이트
+
+5) 데이터 넣을때 임시코드
+    for i in range(10):
+        Path = r'C:\Users\LeeYongJun\Desktop\공동_한이음프로젝트\main\Hanium_AI_Introduction\Final\07_Saramin_dataset\dataset'
+        f = open(f'{Path}/{i}.txt', 'r', encoding='utf-8')
+        intro_data_list = f.readlines()
+        intro_data_str = intro_data_list[2:]
+        intro_data = '\n'.join(intro_data_str)
+
+        corporate_name = intro_data_list[0]
+        print(f'기업명 : {corporate_name}')
+        print(f'자소서 : {intro_data}')
+        print("=======================================================")
+
+# 참고자료
+Django Database 연동하기 - Model설계, Migration:
+https://www.tuwlab.com/ece/26465
+
+Django ORM Query 사용법:
+https://brownbears.tistory.com/63
+==================================================================

@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<script language="JavaScript">
+  function InsertTitle(str) {
+  if (str != "") {
+   document.getElementById("company_name").value = str;
+   document.getElementById("company_name").readOnly = true;
+  } else {
+   document.getElementById("company_name").value = "";
+   document.getElementById("company_name").readOnly = false;
+   document.getElementById("company_name").focus();
+  }
+ }
+</script>
+
+ <div class="masthead ">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-10 col-xs-10 mx-auto">
+                 <h1 class="text-center">자기소개서 수정</h1>
+                 <br><br><br>
+                 <form action="" method="POST">
+                     {% csrf_token %}
+                     <div class="form-group">
+                         <label for="title"><h4>제목</h4></label>
+                         <input name="title" id="title" type="text" class="form-control form-control-lg input-block"  value="{{post.title}}">
+                     </div>
+                     <br>
+                     <div class="form-group">
+                         <label for="company_name"><h4>기업 선택</h4></label>
+                         <br>
+                         <select class="form-control form-control-lg" name="company_name" onchange="InsertTitle(this.value)">
+                             <option value=". . .">. . .</option>
+                             <option value="CJ">CJ</option>
+                             <option value="DB">DB</option>
+                             <option value="KCC">KCC</option>
+                             <option value="KT">KT</option>
+                             <option value="LG">LG</option>
+                             <option value="LS">LS</option>
+                             <option value="SK">SK</option>
+                             <option value="넥슨">넥슨</option>
+                             <option value="넷마블">넷마블</option>
+                             <option value="농협">농협</option>
+                             <option value="대우건설">대우건설</option>
+                             <option value="동원">동원</option>
+                             <option value="두산">두산</option>
+                             <option value="롯데">롯데</option>
+                             <option value="미래에셋">미래에셋</option>
+                             <option value="삼성전자">삼성전자</option>
+                             <option value="셀트리온">셀트리온</option>
+                             <option value="신세계">신세계</option>
+                             <option value="아모레퍼시픽">아모레퍼시픽</option>
+                             <option value="애경">애경</option>
+                             <option value="카카오">카카오</option>
+                             <option value="태영건설">태영건설</option>
+                             <option value="포스코">포스코</option>
+                             <option value="한국타이어">한국타이어</option>
+                             <option value="한진">한진</option>
+                             <option value="한화">한화</option>
+                             <option value="현대백화점">현대백화점</option>
+                             <option value="현대산업개발">현대산업개발</option>
+                             <option value="현대자동차">현대자동차</option>
+                             <option value="효성">효성</option>
+                             <option value="">직접 입력</option>
+                         </select>
+                         <br>
+                         <input id="company_name" name="company_name" type="text" class="form-control form-control-lg input-block" value="{{post.company_name}}" readonly>
+                    </div>
+                     <br>
+                     <div class="form-group">
+                         <label for="department_name"><h4>직무 분야</h4></label>
+                         <input id="department_name" name="department_name" type="text" class="form-control form-control-lg input-block" value="{{post.department_name}}">
+                     </div>
+                     <br>
+                     <div class="form-group">
+                         <label for="contents"><h4>내용 작성</h4></label>
+                         <textarea cols="10" rows="50" id="contents" name="contents" class="form-control form-control-lg input-block">{{post.contents}}</textarea>
+                     </div>
+                     <br><br>
+                     <button type = "button" class = "btn btn-lg btn-outline-dark" onclick = "location.href = '/selfintroboard_post/{{post.id}}'"><i class="fas fa-angle-left"></i>&nbsp;&nbsp;이전</button>
+                     <button type = "button" class = "btn btn-lg btn-outline-success" style="float: right;" data-toggle="modal" data-target="#exampleModalCenter">저장</button>
+
+                     <!-- Modal -->
+                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered " role="document">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h4 class="modal-title" id="exampleModalLongTitle">자기소개서 저장</h4>
+                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                     </button>
+                                 </div>
+                                 <div class="modal-body text-center">
+                                     <h5>자기소개서를 저장하시겠습니까?</h5>
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button type="submit" class="btn btn-lg btn-success" onclick = "location.href = '/selfintroboard_post/{{post.id}}'">저장</button>
+                                     <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">닫기</button>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock content %}

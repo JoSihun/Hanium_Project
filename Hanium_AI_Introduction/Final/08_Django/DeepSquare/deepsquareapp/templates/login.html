@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/new_main.css" rel="stylesheet">
+
+<div class="masthead ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xs-6 mx-auto">
+                <div id="first">
+                    <div class="myform form ">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>로그인</h1>
+                            </div>
+                        </div>
+                        <br>
+                        <form autocomplete="off" id="signin-form" class="setup-form js-signin-form js-octocaptcha-parent" action="" accept-charset="UTF-8" method="POST">
+                            {% csrf_token %}
+
+
+                            <!-- 아이디 -->
+                        <div class="form-group">
+                            <h3 class="join_title"><label for="username">아이디</label></h3>
+                            <span class="box int_id">
+                                <input type="text" id="username" name="username" class="int" maxlength="20" placeholder="아이디 입력">
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+
+                            <!-- 비밀번호 -->
+
+                        <div class="form-group">
+                            <h3 class="join_title"><label for="password">비밀번호</label></h3>
+                            <span class="box int_pass">
+                                <input type="password" id="password" name="password" class="int" maxlength="20" placeholder="비밀번호 입력">
+                            </span>
+                            <span class="error_next_box"></span>
+                            <br>
+                            <a class="label-link" href="/password/"><p style="text-align:right;">비밀번호를 잊으셨나요?</p></a>
+                        </div>
+                            <br>
+
+                            <div class="my-3">
+                                <button class="btn-mktg signup-btn btn btn-info btn-block  js-octocaptcha-form-submit width-full" type="submit" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">로그인</button>
+                            </div>
+                            <br>
+                        </form>
+
+                        <div class = "col-12" style="color:red">{{ error }}</div>
+                        <div class="col-md-12 ">
+                            <div class="form-group">
+                                <p class="text-center">계정이 없으신가요? <a href="/signup/" id="signup">계정 만들기</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="/static/js/login.js"></script>
+{% endblock content %}

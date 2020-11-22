@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<script language="JavaScript">
+    function InsertCompany(str){
+        if(str != "") {
+            document.getElementById("company_name_direct").value = str;
+            document.getElementById("company_name_direct").readOnly = true;
+        }
+        else {
+            document.getElementById("company_name_direct").value = "";
+            document.getElementById("company_name_direct").readOnly = false;
+            document.getElementById("company_name_direct").focus();
+        }
+    }
+</script>
+ <div class="masthead ">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12 col-xs-12 mx-auto">
+                 <h1>자기소개서 작성</h1>
+                 <br><br>
+                 <form method="POST" name="title">
+                     {% csrf_token %}
+                     <div class="form-group">
+                         <label for="title"><h4>제목</h4></label>
+                         <input id="title" type="text" name="title" class="form-control form-control-lg input-block" placeholder="제목 입력">
+                     </div>
+                     <br>
+                     <div class="form-group">
+                        <label for="company_name"><h4>기업 선택</h4></label>
+                        <br>
+                        <select id="company_name" name="company_name" class="form-control form-control-lg col-md-12 col-xs-12" onchange="InsertCompany(this.value)">x`
+                            <option value="none" selected>. . .</option>
+                            <option value="CJ">CJ</option>
+                            <option value="DB">DB</option>
+                            <option value="KCC">KCC</option>
+                            <option value="KT">KT</option>
+                            <option value="LG">LG</option>
+                            <option value="LS">LS</option>
+                            <option value="SK">SK</option>
+                            <option value="넥슨">넥슨</option>
+                            <option value="넷마블">넷마블</option>
+                            <option value="농협">농협</option>
+                            <option value="대우건설">대우건설</option>
+                            <option value="동원">동원</option>
+                            <option value="두산">두산</option>
+                            <option value="롯데">롯데</option>
+                            <option value="미래에셋">미래에셋</option>
+                            <option value="삼성전자">삼성전자</option>
+                            <option value="셀트리온">셀트리온</option>
+                            <option value="신세계">신세계</option>
+                            <option value="아모레퍼시픽">아모레퍼시픽</option>
+                            <option value="애경">애경</option>
+                            <option value="카카오">카카오</option>
+                            <option value="태영건설">태영건설</option>
+                            <option value="포스코">포스코</option>
+                            <option value="한국타이어">한국타이어</option>
+                            <option value="한진">한진</option>
+                            <option value="한화">한화</option>
+                            <option value="현대백화점">현대백화점</option>
+                            <option value="현대산업개발">현대산업개발</option>
+                            <option value="현대자동차">현대자동차</option>
+                            <option value="효성">효성</option>
+                            <option value="">직접 입력</option>
+                        </select>
+                         <br>
+                         <input id="company_name_direct" name="company_name" type="text" class="form-control form-control-lg input-block" value=". . ." readonly>
+                    </div>
+                     <br>
+                     <div class="form-group">
+                         <label for="department_name"><h4>직무 분야</h4></label>
+                         <input id="department_name" type="text" name="department_name" class="form-control form-control-lg input-block" placeholder="직무 분야 입력">
+                     </div>
+                     <br>
+                     <div class="form-group">
+                         <label for="contents"><h4>내용 작성</h4></label>
+                         <textarea id="contents"  name="contents" cols="10" rows='20' placeholder="내용 입력" class="form-control form-control-lg input-block"></textarea>
+                     </div>
+                     <br><br>
+                     <button type = "button" class = "btn btn-lg btn-outline-dark" onclick = "location.href = '/'"><i class="fas fa-angle-left"></i>&nbsp;&nbsp;이전</button>
+                     <button type = "button" class = "btn btn-lg btn-outline-success" data-toggle="modal" data-target="#save_self_intro" style="float: right;">저장</button>
+
+                     <!-- Modal -->
+                     <div class="modal fade" id="save_self_intro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered" role="document">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h5 class="modal-title" id="exampleModalLabel">자기소개서 저장</h5>
+                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                     </button>
+                                 </div>
+                                 <div class="modal-body text-center">
+                                     자기소개서를 저장하시겠습니까?
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button type="submit" class="btn btn-lg btn-success" onclick = "location.href = '/my_self_intro'">저장</button>
+                                     <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">닫기</button>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- selfintroboard -->
+<div class="masthead ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 mx-auto">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title"><i class="fas fa-list-ul"></i>&nbsp;&nbsp;내 자기소개서 목록</h1>
+                    </div>
+                    <br>
+
+                    <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead style="white-space:nowrap;">
+                        <tr>
+                            <th scope="col">번호</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">작성자</th>
+                            <th scope="col">작성일</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in posts %}
+                        <tr style="white-space:nowrap;" onclick = "location.href = '/selfintroboard_post/{{post.id}}'">
+                            <td>{{post.id}}</td>
+                            <td>{{post.title}}</td>
+                            <td>{{post.name}}</td>
+                            <td nowrap>{{post.registered_date}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <br><br>
+                    <div class="row">
+                        <div class="col">
+                            <ul class="pagination pagination-lg justify-content-center">
+                                {% if posts.has_previous %}
+                                <li class = "page-item"><a class = "page-link" style="border-color: lightgray; color:black;" href = "?p={{posts.previous_page_number}}"><i class="fas fa-angle-left"></i></a></li>
+                                {% else %}
+                                <li class = "page-item disabled"><a class = "page-link disabled" style="border-color: lightgray; color:gray;" href = "#"><i class="fas fa-angle-left"></i></a></li>
+                                {% endif %}
+                                <li class = "page-item active"><a class = "page-link" style="border-color: lightgray; background-color: white; color:black;">{{posts.number}}/{{posts.paginator.num_pages}}</a></li>
+                                {% if posts.has_next %}
+                                <li class = "page-item"><a class = "page-link" style="border-color: lightgray; color:black;" href = "?p={{posts.next_page_number}}"><i class="fas fa-angle-right"></i></a></li>
+                                {% else %}
+                                <li class = "page-item disabled"><a class = "page-link disabled" style="border-color: lightgray; color:gray;" href = "#"><i class="fas fa-angle-right"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

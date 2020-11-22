@@ -1,0 +1,52 @@
+{% extends "app/base_my.html" %}
+{% load static %}
+{% block content %}
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        &nbsp;<span class="fas fa-list"></span>
+                                        &nbsp;<font size="4">기능 목록</font>
+                                    </h3>
+                                </div>
+                                <br>
+                                <p>
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="/grammar"><img class="media-object" src="{% static 'images/1.jpg' %}" alt="맞춤법 검사 이미지"></a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="/grammar">&nbsp;맞춤법 검사</a></h4>
+                                            &nbsp;&nbsp;맞춤법 검사는 띄어 쓰기, 틀린 단어 등을 검사해줍니다.
+                                            또한 올바른 단어로 자동으로 수정해주는 기능을 가지고 있습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>제목</th>
+                                            <th>작성일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for self_intro in self_intros %}
+                                        {% if self_intro.name == username %}
+                                        <tr onclick = "location.href = '/grammar/detail/{{self_intro.id}}'">
+                                        <th>{{self_intro.title}}</th>
+                                        <th>{{self_intro.registered_date}}</th>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock content %}

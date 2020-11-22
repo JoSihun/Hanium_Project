@@ -1,0 +1,33 @@
+{% extends "app/base_my.html" %}
+{% load static %}
+{% block content %}
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        &nbsp;<span class="fas fa-list"></span>
+                                        &nbsp;<font size="4">기능 목록</font>
+                                    </h3>
+                                </div>
+                                <br>
+                                <p>
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="/recommend"><img class="media-object" src="{% static 'images/4.jpg' %}" alt="추천 답변이미지"></a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="/recommend">&nbsp;추천 답변</a></h4>
+                                            &nbsp;&nbsp;추천 답변은 작성한 자기소개서를 읽고 판단해 좋은 답변을 추천해줍니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="masthead ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div id="second">
+                    <div class="myform form ">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>Create your account</h1>
+                            </div>
+                        </div>
+                        <br>
+                        <form autocomplete="off" id="signup-form" class="setup-form js-signup-form js-octocaptcha-parent" action="#success" accept-charset="UTF-8" method="post">
+                            {% csrf_token %}
+                            <!--
+                            <dl class="form-group my-3 required">
+                                <dt class="input-label">
+                                    <label name="userid" autocapitalize="off" autofocus="autofocus" required="required" for="userid">Userid</label>
+                                </dt>
+                                <dd>
+                                    <input name="userid" autocapitalize="off" autofocus="autofocus" required="" class="form-control input py-1" type="text" id="userid" autocomplete="off" spellcheck="false" aria-describedby="input-check-6750 " placeholder="Enter ID">
+                                </dd>
+                            </dl>
+                            -->
+                            <dl class="form-group my-3 required">
+                                <dt class="input-label">
+                                    <label name="username" autocapitalize="off" autofocus="autofocus" required="required" for="username">User Name</label>
+                                </dt>
+                                <dd>
+                                    <input name="username" autocapitalize="off" autofocus="autofocus" required="" class="form-control input py-1" type="text" id="username" autocomplete="off" spellcheck="false" aria-describedby="input-check-6750 " placeholder="UserName">
+                                </dd>
+                            </dl>
+                            <dl class="form-group my-3 required">
+                                <dt class="input-label">
+                                    <label name="useremail" autocapitalize="off" required="required" for="useremail">User Email</label>
+                                </dt>
+                                <dd>
+                                    <input name="useremail" autocapitalize="off" required="" class="form-control input py-1" value="" type="text" id="useremail" autocomplete="off" spellcheck="false" placeholder="Enter email">
+                                </dd>
+                            </dl>
+                            <password-strength minimum-character-count="8" passphrase-length="15" invalid-message="Password is invalid." error-class="text-red text-bold" pass-class="text-green">
+                                <dl class="form-group mt-3 mb-2 required">
+                                    <dt class="input-label">
+                                        <label name="password" required="required" for="password">Password</label>
+                                    </dt>
+                                    <dd>
+                                        <input name="password" required="required" class="form-control input py-1" type="password" id="password" autocomplete="off" spellcheck="false" aria-describedby=" " placeholder="Enter Password">
+                                    </dd>
+                                </dl>
+                                <dl class="form-group mt-3 mb-2 required">
+                                    <dt class="input-label">
+                                        <label name="repassword" required="required" for="repassword">Re-password</label>
+                                    </dt>
+                                    <dd>
+                                        <input name="repassword" required="required" class="form-control input py-1" type="password" id="repassword" autocomplete="off" spellcheck="false" aria-describedby=" " placeholder="Enter Password">
+                                    </dd>
+                                </dl>
+                            </password-strength>
+                            <dl class="form-group my-3">
+                                <dt class="input-label mb-n2">
+                                    <label>Email preferences</label>
+                                </dt>
+                                <dd>
+                                    <div class="form-checkbox">
+                                        <label class="text-normal mt-2 text-gray" data-ga-click="Sign up, send email">
+                                            <input type="checkbox" name="all_emails" id="all_emails" value="true" data-ga-click="Signup funnel entrance, click, select checkbox marketing opt-in">
+                                            Send me occasional product updates, announcements, and offers.
+                                        </label>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <div class="my-3">
+                                <button class="btn-mktg signup-btn btn btn-info btn-block  js-octocaptcha-form-submit width-full" type="submit" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">Create account</button>
+                            </div>
+                        </form>
+                        <div class = "col-12" style="color:red">{{ error }}</div>
+                        <div class="col-md-12 ">
+                            <div class="form-group">
+                                <p class="text-center">Already have an account? <a href="/login/" id="signin"> Sign in</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock content %}

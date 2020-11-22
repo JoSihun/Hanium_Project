@@ -1,0 +1,453 @@
+한이음 GitLab 주소 : https://lab.hanium.or.kr/20_hf103/main.git
+한이음 AWS ID: hanium-aws-056@didim365.net
+한이음 AWS PW: G%G!99JydK!GWCy
+
+사용중 인스턴스 ID : i-08920eb1283942424
+사용중 보안그룹 ID : sg-06885e2fa1cbd1017
+사용자	ID		PW
+조시훈 	josihun 		0823
+조동민 	jodongmin 	1105
+이용준 	leeyongjun 	0310
+이성찬 	leesungchan	0605
+
+==================================================================
+==================================================================
+AWS 기본개념
+
+# AWS EC2(Amazon Web Services Elastic Compute Cloud) : 
+    서버로 쓸 수 있는 환경을 클라우드로 제공하는 웹 서비스
+
+# EC2 Instance (EC2 인스턴스)
+    AWS에서 제공하는 일종의 상품으로
+    크게 5가지 유형으로 분류되며, 각 유형별로
+    성능에 따라 4가지 자원의 조합으로 세분화된다.
+
+# EC2 Instance (EC2 인스턴스) 유형
+    General purpose(t, m)	: 모든 리소스의 균형을 유지하여 사용 
+    Compute optimized(c)	: 고성능 프로세서 (일괄처리, 머신러닝 등)
+    GPU instances(p, g)	: 그래픽 처리와 같은 하드웨어 기반 컴퓨팅 리소스에 비중
+    Memory optimized(r, x)	: 메모리에서 대규모 데이터 처리
+                                          (관계형 및 NoSQL 데이터베이스,
+                                          '키-값' 유형의 데이터, 비정형 데이터 처리)
+    Storage optimized(h, i, d)	: 로컬 스토리지의 초대형 데이터 세트에 대한
+                                           순차적 읽기 및 쓰기 엑세스가 많이 필요한 작업에 적합
+                                          (대량 병렬 처리, 데이터 웨어하우스, 하둡 분산, 로그 처리 등)
+    ※ optimized : 최적화된
+    ※ purpose : 목적
+
+# EC2 Instance (EC2 인스턴스) 자원
+    CPU / 메모리 / 스토리지 / 네트워킹 용량
+    등의 4가지 자원의 조합으로 운영하려는 서버에 최적화된 환경을 제공한다.
+
+# EC2 Instance (EC2 인스턴스) 3가지 이점
+    필요한 컴퓨터의 크기 설정 가능
+    컴퓨팅 리소스에 대한 포괄적 제어권을 제공
+    보안 및 네트워크 구성, 스토리지 관리 효과적
+
+# 참고자료
+AWS EC2란? :
+https://helloinyong.tistory.com/100?category=832498
+
+AWS EC2 세부개념 및 인스턴스 생성 세부설명(보안 그룹 설정이 필요시 참고 할 것):
+https://goddaehee.tistory.com/179
+
+==================================================================
+==================================================================
+AWS EC2 생성
+
+# AWS EC2 생성
+    1) Amazon EC2 콘솔 오픈
+    2) 콘솔 우측상단 리전(서울) 선택 후 인스턴스 시작 버튼 클릭
+    3) Amazon Machine Image(AMI) 선택 : Deep Learning AMI (Ubuntu선택, Ubuntu = Linux)
+    4) 인스턴스 선택 : 실질적으로는 유형상관 없이 예산범위내에서 최고 성능 인스턴스를 선택하면 됨
+        ex) Compute Optimized / c5.xlarge /
+             4CPUs / 8GB / EBS 전용 / EBS 최적화 사용 가능 /
+             최대 10기가비트 / 예
+    5) 인스턴스 검토
+    6) 키페어 생성 및 선택
+    7) 확인 페이지 인스턴스 실행 중 확인
+
+# 참고자료
+AWS EC2 세부개념 및 인스턴스 생성 세부설명(보안 그룹 설정이 필요시 참고 할 것):
+https://goddaehee.tistory.com/179
+
+AWS EC2 인스턴스 생성 및 Putty로 서버에 접속하는 방법(참고만 할 것):
+https://kingb.tistory.com/7
+
+AWS EC2 인스턴스 생성 및 보안그룹 설정과 
+서버에 접속하는 다양한 방법(너무 복잡하니 Putty만 참고만 할 것):
+https://shlee0882.tistory.com/180
+
+인스턴스 생성 및 Mac OS X / Window Putty / Conda 로 서버접속:
+https://datascienceschool.net/view-notebook/a6e840e0c0274fcda7b9cac9e49f1735/
+==================================================================
+서버접속 [인스턴스 생성 후]
+
+# 키페어 = .pem 파일 : 일종의 암호키
+    서버에 접속할 수 있는 굉장히 중요한 파일
+    관리자 본인의 HDD에 저장하며,
+    본인의 PC 중에서도 관리자 계정만 사용할 수 있도록 보안설정
+    애초에 보안설정을 하지 않으면 서버에 접속 불가
+
+# 키페어 보안설정
+    Windows 사용자
+    1) 속성 - 보안 탭 - 고급
+    2) 상속 사용 안 함 - 명시적 사용 권한으로 변환
+    3) 관리자 그룹을 제외한 사용자 제거, 관리자그룹 = (SYSTEM, Administrators)
+    4) 확인 - 확인
+
+    Linux 사용자
+    1) chmod 400 명령어 입력
+
+# 서버 접속
+    ssh 라는 일종의 프로토콜을 통해 접속
+    1) cmd 관리자권한으로 실행 (단축키로 안될 시 마우스 우클릭으로 실행)
+    2) cd 키페어가 존재하는 경로
+    3) AWS EC2 콘솔 이동 - 실행중인 인스턴스
+    4) 연결 - ssh 명령줄 복사
+    5) cmd 붙여넣기 - yes
+
+==================================================================
+AWS EC2 Linux = Ubuntu 계정추가
+
+# 기본개념
+    AWS EC2를 사용하면서 ubuntu에 사용자를 추가해
+    각각의 유저가 자신의 사용자 계정을 사용한다면,
+    자신만의 파일과 작업 공간을 가질 수 있고
+    잘못 사용해서 시스템에 피해가 생기는 일도 어느정도 예방
+
+# EC2 인스턴스 계정추가 방법론
+    정석적인 방법은 하나의 EC2에서 생성한 각각의 사용자 계정마다 key pair를 생성,
+    각 계정에 맞게 설정된 key pair를 통해서만 접속 할 수 있도록 설정
+
+    그러나 상기 방법이 매우 번거롭기 때문에
+    최초 EC2 인스턴스를 생성하며 만들었던 key pair를 모든 사용자가 공유하거나,
+    password 기반의 로그인을 활성화, ssh key를 사용하지 않고 로그인하는 등의 편법이 있다.
+
+    계정추가 편법 ex)
+    (1) 사용자를 시스템에 추가한 후
+    (2-1) EC2 인스턴스를 생성하며 사용했던 key pair 사용
+    (2-2) password 기반의 로그인을 활성화하여 ssh key를 사용하지 않고 로그인
+
+==================================================================
+AWS EC2 Linux = Ubuntu 계정추가 (feat. 조시훈)
+
+1) root password 설정
+$ sudo passwd root
+
+2) password 기반 로그인 활성화
+$ sudo vi /etc/ssh/sshd_config
+PasswordAuthentication no -> PasswordAuthentication yes
+ESC - :wq!
+
+3) root 계정으로 로그인
+$ su - root
+
+4) 다른 사용자 계정 추가
+$ adduser newuser
+
+5) 새로 생성한 사용자 계정 비밀번호 변경
+$ sudo passwd newuser
+
+6) 새로 생성한 사용자 계정 권한 설정
+$ sudo visudo
+root ALL=(ALL) ALL 아래에
+newuser ALL=(ALL) ALL 추가
+
+7) 새로 생성한 사용자 계정에 키페어 복사
+ubuntu 계정의 .ssh 폴더를 newuser 계정에 복사
+$ sudo cp -r /home/ubuntu/.ssh/ /home/newuser/.ssh/
+
+8) 복사한 키페어의 소유자를 newuser로 변경 (-R : 하위폴더까지 소유권 변경)
+$ sudo chown -R newuser:newuser /home/newuser/.ssh
+
+9) sshd 서비스 재시작
+$ sudo service ssh restart	// Ubuntu
+$ sudo service sshd restart	// Linux
+
+10) 추가된 계정으로 접속하기
+$ ssh newuser@IPv4 Public IP
+$ 계정추가 시 등록한 비밀번호 입력
+
+ex) 키페어 생성방법 사용 시
+    관리자 권한으로 cmd.exe 실행 후
+    키페어(.pem)파일이 위치한 경로로 이동
+    ssh-keygen -y -f 키페어이름.pem
+
+# 참고자료
+EC2 인스턴스 계정추가 (블로그, 키페어파일 복사하는 방법)
+https://uroa.tistory.com/100
+
+EC2 인스턴스 계정추가 (아마존, 키페어파일 생성하는 방법)
+https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/managing-users.html
+
+EC2 인스턴스 계정추가 및 권한설정 (아마존, 키페어파일 생성하는 방법)
+https://aws.amazon.com/ko/premiumsupport/knowledge-center/new-user-accounts-linux-instance/
+==================================================================
+==================================================================
+==================================================================
+AWS EC2 Linux = Ubuntu 계정추가 (feat. 조동민)
+
+1) 최초에는 .pem 파일을 사용하여 EC2에 접속
+
+2) 새로운 유저 생성
+$ sudo useradd -s /bin/bash -m -d /home/USERNAME -g root USERNAME
+$ sudo useradd -s /bin/bash -m -d /home/jodongmin -g root jodongmin	// 예시
+
+3) 유저 비밀번호 설정
+$ sudo passwd USERNAME
+$ sudo passwd jodongmin	// 예시
+
+패스워드 입력
+Enter new UNIX password:                                                                                               
+Retype new UNIX password:      
+
+4) sudoers 파일 권한 변경
+$ sudo chmod u+w /etc/sudoers	// sudoers 파일 권한 변경
+$ sudo vi /etc/sudoers 		// sudoers 파일 열고
+USERNAME ALL=(ALL:ALL) ALL      	// username 추가
+jodongmin ALL=(ALL:ALL) ALL		// 예시
+
+5) sshd_config 파일, PasswordAuthentication 설정 변경
+$ sudo vi /etc/ssh/sshd_config
+PasswordAuthentication no -> PasswordAuthentication yes
+
+6) ssh 재시작
+$ sudo service ssh restart
+
+7) 추가한 계정으로 접속
+ssh [username]@host		// 형식
+$ ssh username@52.23.68.21		// cmd에서 이러한 형식으로 입력
+$ ssh jodongmin@54.180.102.184	// 예시
+
+위와 같은 형식으로 입력
+위에서 설정한 패스워드 입력
+완료!
+
+==================================================================
+==================================================================
+==================================================================
+파이썬 가상환경 설치
+
+1) apt-get 업데이트
+$ sudo apt-get update
+
+2) 파이썬 venv 설치 - Y입력
+$ sudo apt-get install python3-venv
+$ Do you want to continue? [Y/n] Y
+
+3) 파이썬 가상환경 생성
+$ python3 -m venv venv
+
+4) 파이썬 가상환경 실행
+$ source ~/venv/bin/activate
+
+5) 파이썬 가상환경 실행 상태에서 가상환경 pip 업그레이드
+(venv) $ pip install --upgrade pip
+
+6) 파이썬 가상환경 실행 상태에서 가상환경에 django 설치
+(venv) $ pip install django
+
+7) 파이썬 가상환경 종료
+$ deactivate
+
+# 참고자료
+AWS EC2 Ubuntu 18.04 파이썬3 venv 환경설정:
+http://blog.cloudsys.co.kr/ubuntu-18-04-python3-venv-setup/
+
+==================================================================
+PostgreSQL 설치
+
+1) apt-get 업데이트 (이미 설치되었으면 다음으로)
+$ sudo apt-get update
+
+2) postgresql 설치
+$ sudo apt-get install postgresql postgresql-contrib
+
+3) postgres 계정 변경 후 postgresql 실행
+$ sudo -i -u postgres
+$ psql
+
+4) postgresql 종료 및 postgres 계정 로그아웃
+$ \q
+$ exit
+
+# 참고자료
+Ubuntu에 PostgreSQL 설치하고 기본 명령 살펴보기:
+https://dejavuqa.tistory.com/16
+
+==================================================================
+Git 설치 및 프로젝트 Clone
+한이음 Git 주소 : https://lab.hanium.or.kr/20_hf103/main.git
+
+1) Git 설치여부 확인 및 설치 (일반적으로 AMI에서는 Git이 기본 설치되어 있음)
+$ git --version		// 설치여부 확인
+$ sudo apt-get install git	// 설치
+
+2) Git 설치확인
+$ git --version
+
+3) Git 폴더 생성
+$ mkdir 폴더이름
+
+4) 생성한 폴더로 이동
+$ cd 폴더이름
+
+5) Git Clone
+$ git clone https://Git주소
+
+# 참고자료
+EC2에 Git 설치 및 프로젝트 Clone:
+https://jojoldu.tistory.com/263
+
+==================================================================
+==================================================================
+==================================================================
+Linux X11 설치 [서버 다운 문제 발생, 별도의 인스턴스로 테스트할 것]
+
+호스트 설정 (ubuntu 계정으로 추측)
+1) Xwindow 관련 패키지 설치
+$ yum groupinstall -y "X Window System" "Desktop" "Fonts" "Korean Support"
+
+2) xauth 설치 (yum 또는 apt-get을 사용?)
+$ sudo yum install xauth	// 레드햇 계열
+$ sudo apt-get install xauth	// 데비안 계열
+
+3) 테스트용 파이어폭스 설치
+$ sudo apt-get install firefox
+
+4) sshd 설정 변경 (X11Forwarding 활성화)
+$ sudo vi /etc/ssh/sshd_config
+   X11Forwarding yes
+
+5) ~/.Xauthority 빈파일 생성
+$ cd ~				// 홈으로 이동
+$ mv .Xauthority .Xauthority.bak	// 원본 백업
+$ touch .Xauthority			// .Xauthority 빈 파일 생성
+
+6) sshd 데몬 재시작
+$ sudo service sshd restart
+
+클라이언트 설정 변경 (윈도우 터미널인지 추가된 리눅스 계정인지 모호함, 조사필요)
+1) ssh 설정 (X11Forwarding 활성화)
+$ sudo vi /etc/ssh/ssh_config
+   X11Forwarding yes
+
+2) 이후 ssh 서버 접속시 -X 옵션 사용하여 X11 포워딩 가능
+ex) ssh -X john@server.net
+
+# 참고자료
+Linux X11 Forwarding - 리눅스 SSH GUI 사용하기:
+https://harryp.tistory.com/684
+
+==================================================================
+==================================================================
+==================================================================
+AWS EC2 Ubuntu GUI Desktop 원격연결 (feat. 이성찬)
+
+1) EC2 Ubuntu 접속
+
+2) GUI 패키지 설치
+$ sudo apt-get install ubuntu-desktop
+$ sudo apt-get install vnc4server
+$ sudo apt-get install gnome-panel
+
+3) vncserver 비밀번호 설정 후 vncserver 종료 (짧은 비밀번호 불가)
+$ vncserver
+$ vncserver -kill :1
+
+4) ~/.vnc/xstartup 설정, 붙여넣기 (vi / nano / cat 중 선택하여 사용)
+$ vi ~/.vnc/xstartup
+
+#!/bin/sh
+# Uncomment the following two lines for normal          desktop:
+unset SESSION_MANAGER
+# exec /etc/X11/xinit/xinitrc
+gnome-session –session=gnome-classic &
+gnome-panel&
+:wq!
+
+5) vncserver 실행
+$ vncserver
+
+6) tightvnc 설치 (설치 시 비밀번호 설정)
+https://www.tightvnc.com/download.php
+
+7) AWS 보안그룹 설정
+AWS 보안그룹 - 인바운드 규칙편집 - 규칙 추가
+사용자 지정 TCP / 포트범위 5901 / 소스 위치무관
+설정 후 저장
+
+8) vncserver 연결
+TightVNC 실행
+퍼블릭IP::5901 입력
+Connect
+설치 시 설정한 비밀번호 입력
+
+9) vncserver 종료
+$ vncserver -kill :1
+
+# 참고자료
+AWS EC2 Ubuntu GUI 원격연결:
+https://soraji.github.io/back/2020/01/27/awsubuntugui/
+
+==================================================================
+==================================================================
+==================================================================
+AWS EC2 Ubuntu GUI Desktop 원격연결 (feat. 조동민)
+1) EC2 Ubuntu 접속
+
+2) GUI 패키지 설치
+sudo apt-get update
+sudo apt-get install --no-install-recommends ubuntu-desktop
+sudo apt-get install tightvncserver
+sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+
+3) vncserver 실행
+$ vncserver :1
+
+4) ~/.vnc/xstartup 설정, 붙여넣기 (vi / nano / cat 중 선택하여 사용)
+$ nano ~/.vnc/xstartup
+
+#!/bin/sh
+export XKL_XMODMAP_DISABLE=1
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+gnome-panel &
+gnome-settings-daemon &
+metacity &
+nautilus &
+gnome-terminal &
+:wq!
+
+5) vncserver 재시작
+$ vncserver -kill :1
+$ vncserver :1
+
+==================================================================
+==================================================================
+==================================================================
+Unable to correct problems, you have held broken packages 오류 해결방법
+
+$ sudo dpkg --configure -a			// 보류/손상된 패키지 수정
+$ sudo apt-get install -f			// 종속성 목록 작성 및 상태정보 읽기
+$ sudo apt-get clean && sudo apt-get update	// /var/cache/apt/archives의파일 삭제
+$ sudo apt-get upgrade			// 시스템의 모든 패키지 업데이트
+
+# 참고자료
+Unable to correct problems, you have held broken packages. 오류해결:
+https://jungeun960.tistory.com/79
+
+==================================================================
+==================================================================
+==================================================================
+# 기타참고자료
+Amazon Instance 요금표:
+https://aws.amazon.com/ko/ec2/pricing/on-demand/
+
+# 태그목록
+amazon, AWS, cloud, Coding, EC2, IT, Server, 서버, 코딩, 클라우드

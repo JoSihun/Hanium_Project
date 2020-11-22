@@ -1,0 +1,12 @@
+1. 접속 전 보안 설정
+EC2 - Security Groups - Inbound Edit - Add Rule(Custom TCP Rule / TCP / 8000 / Anywhere)
+
+2. Git에서 코드 불러와 실행
+git clone <Git 주소>
+manage.py가 있는 디렉토리로 이동
+python3 manage.py runserver 0.0.0.0:8000
+
+3. 브라우저에 접속
+브라우저에서 EC2 - Running instances - Public DNS뒤에 :8000붙인 주소로 접속
+
+#참고 https://programmers.co.kr/learn/courses/6/lessons/629

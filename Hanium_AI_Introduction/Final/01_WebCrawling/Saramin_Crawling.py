@@ -22,6 +22,16 @@ def createFolder(directory):
             print(f'Already Exist! {mkdir_path}')
         mkdir_path += '/'
 
+# 자소서 텍스트 정규화
+def text_normalization(text):
+    result = ''
+    lines = text.split('\n')                    # 라인단위로 분할
+    for line in lines:                          # 각 라인별로
+        if line.strip() != '':                  # 해당 라인이 공백이 아니면(내용이 존재하면)
+            result += line.strip() + '\n'       # 해당 라인 + '\n'
+
+    return result.strip()                       # 최종 텍스트 양 끝 공백제거
+
 # 해당 페이지 크롤링
 def crawling(page_num):
     html = requests.get(f'http://www.saramin.co.kr/zf_user/public-recruit/coverletter?real_seq={page_num}')
@@ -40,36 +50,24 @@ def crawling(page_num):
     contents = ''
     boxes = soup.find_all("div", class_="box_ty3")
     for box in boxes:
-        question = box.find_next('h3').text                             # 자소서 질문
-        erase1 = box.find_next('div', class_='txt_byte').text           # 글자수 | bytes
-        erase2 = box.find_next('button', class_='btn_tsp_hide').text    # 접기
+        answer = str(box)                                                           # 태그를 포함한 텍스트를 str형으로 변환
 
-        answer = box.text.replace(question, '')                         # 자소서 질문 삭제
-        answer = answer.replace(erase1, '')                             # 글자수 | bytes 삭제
-        answer = answer.replace(erase2, '')                             # 접기 삭제
+        answer = answer.replace(f'<div class="box_ty3">', '')                       # 최초 div 태그 삭제
+        answer = answer.replace(f'<div class="box_ty3" style="display:none">', '')  # 질문별 box_ty3 div 태그 삭제
+        answer = answer.replace(f'<br/>', '')                                       # <br/> 태그 삭제
 
-        if box.find_next('h4', class_='tsp_ty2'):                       # 첨삭 존재시
-            erase3 = box.find_next('h4', class_='tsp_ty2').text         # 첨삭결과
-            erase4 = box.find_next('p').text                            # 첨삭내용
-            answer = answer.replace(erase3, '')                         # 첨삭결과 삭제
-            answer = answer.replace(erase4, '')                         # 첨삭내용 삭제
+        question = str(box.find_next('h3'))                                         # 태그를 포함한 자소서 질문
+        answer = answer.replace(question, '')                                       # 태그를 포함한 자소서 질문 삭제
+        index = answer.index(f'<div class="txt_byte">')                             # 자소서 내용 외 부가내용 시작 인덱스
+        answer = answer[:index]                                                     # 자소서 내용 외 부가내용 삭제
 
-        contents += answer                                              # 자소서내용
+        contents += answer                                                          # 자소서내용
 
     text = f'{company_name}\n{occupation}\n{contents}'                  # 기업명, 직종, 자소서내용
     result = text_normalization(text)                                   # 추출 자소서 텍스트 정규화
 
     return result
 
-# 자소서 텍스트 정규화
-def text_normalization(text):
-    result = ''
-    lines = text.split('\n')                    # 라인단위로 분할
-    for line in lines:                          # 각 라인별로
-        if line.strip() != '':                  # 해당 라인이 공백이 아니면(내용이 존재하면)
-            result += line.strip() + '\n'       # 해당 라인 + '\n'
-
-    return result.strip()                       # 최종 텍스트 양 끝 공백제거
 
 
 if __name__ == '__main__':

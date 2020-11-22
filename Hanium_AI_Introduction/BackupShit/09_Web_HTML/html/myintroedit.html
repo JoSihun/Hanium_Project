@@ -1,0 +1,64 @@
+{% extends "app/base_my.html" %}
+
+{% block content %}
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-xs-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="paenl-title">
+                            &nbsp;<span class="fas fa-edit"></span>
+                            &nbsp;<font size="4">자기소개서 수정</font>
+                        </h3>
+                    </div>
+                    <br>
+                    <div class="panel-body">
+                        <tbody>
+                        <form action="" method="POST" encType="multiplart/form-data">
+                            {% csrf_token %}
+                            <label for = "title">제목</label>
+                            <input type = "text" class = "form-control" id = "title" value = "{{self_intro.title}}" name="title">
+                            <hr>
+                            <label for = "question_1" id="question_1">문항 1</label>
+                            <textarea class ="form-control" rows="2" name="question_1" >{{self_intro.question_1}}</textarea>
+                            <label for = "answer_1" id="answer_1">내용 1</label>
+                            <textarea class ="form-control" rows="10" name="answer_1" >{{self_intro.answer_1}}</textarea>
+                            <hr>
+                            <label for = "question_2" id="question_2">문항 2</label>
+                            <textarea class ="form-control" rows="2" name="question_2" >{{self_intro.question_2}}</textarea>
+                            <label for = "answer_2" id="answer_2">내용 2</label>
+                            <textarea class ="form-control" rows="10" name="answer_2" >{{self_intro.answer_2}}</textarea>
+                            <hr>
+                            <label for = "question_3" id="question_3">문항 3</label>
+                            <textarea class ="form-control" rows="2" name="question_3" >{{self_intro.question_3}}</textarea>
+                            <label for = "answer_3" id="answer_3">내용 3</label>
+                            <textarea class ="form-control" rows="10" name="answer_3" >{{self_intro.answer_3}}</textarea>
+                            <hr>
+                            <label for = "question_4" id="question_4">문항 4</label>
+                            <textarea class ="form-control" rows="2" name="question_4" >{{self_intro.question_4}}</textarea>
+                            <label for = "answer_4" id="answer_4">내용 4</label>
+                            <textarea class ="form-control" rows="10" name="answer_4" >{{self_intro.answer_4}}</textarea>
+                            <hr>
+                            <label for = "question_5" id="question_5">문항 5</label>
+                            <textarea class ="form-control" rows="2" name="question_5" >{{self_intro.question_5}}</textarea>
+                            <label for = "answer_5" id="answer_5">내용 5</label>
+                            <textarea class ="form-control" rows="10" name="answer_5" >{{self_intro.answer_5}}</textarea>
+                            <br>
+                            <tr>
+                                <td colspan="2">
+                                    <button type = "submit" class="btn btn-outline-dark" style="float: right;"/><i class="fas fa-pen"></i>수정</button>
+                                    <button type = "button" class = "btn btn-primary" onclick = "location.href = '/myintro/detail/{{self_intro.id}}'">돌아가기</button>
+                                    <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+                                               <a class="btn btn-default" type="reset"> reset </a>
+                                               <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+                                </td>
+                            </tr>
+                        </form>
+                        </tbody>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

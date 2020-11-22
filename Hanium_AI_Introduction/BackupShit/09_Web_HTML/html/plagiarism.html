@@ -1,0 +1,52 @@
+{% extends "app/base_my.html" %}
+{% load static %}
+{% block content %}
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        &nbsp;<span class="fas fa-list"></span>
+                                        &nbsp;<font size="4">기능 목록</font>
+                                    </h3>
+                                </div>
+                                <br>
+                                <p>
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="/plagiarism"><img class="media-object" src="{% static 'images/2.jpg' %}" alt="표절 검사 이미지"></a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="/plagiarism">&nbsp;표절 검사</a></h4>
+                                            &nbsp;&nbsp;표절 검사는 합격한 자기소개서들과 비교하여 얼마나 일치하는지를 검사합니다.
+                                            합격 자기소개서와의 일치도를 확률(%)로 보여줍니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>제목</th>
+                                            <th>작성일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for self_intro in self_intros %}
+                                        {% if self_intro.name == username %}
+                                        <tr onclick = "location.href = '/plagiarism/detail/{{self_intro.id}}'">
+                                        <th>{{self_intro.title}}</th>
+                                        <th>{{self_intro.registered_date}}</th>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock content %}

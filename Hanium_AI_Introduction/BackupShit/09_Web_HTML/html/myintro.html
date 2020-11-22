@@ -1,0 +1,86 @@
+{% extends "app/base_my.html" %}
+
+{% block content %}
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-xs-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="paenl-title">
+                            &nbsp;<span class="fas fa-archive"></span>
+                            &nbsp;<font size="4">내 자기소개서</font>
+                        </h3>
+                    </div>
+                    <p>
+                    <div class="panel-body"></div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th nowrap>제목</th>
+                            <th nowrap>작성일</th>
+                            <th nowrap></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for self_intro in self_intros %}
+                        {% if self_intro.name == username %}
+                        <tr>
+                            <td>{{self_intro.title}}</td>
+                            <td nowrap>{{self_intro.registered_date}}</td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal" style="float: right;"><i class="fas fa-pen"></i>&nbsp;수정 및 삭제</button>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="ModalLabel">자기소개서 수정 및 삭제</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="text-align: center;">자기소개서를 수정하시겠습니까?</div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" onclick = "location.href = '/myintro/edit/{{self_intro.id}}'">수정하기</button>
+                                        <button type="submit" class="btn btn-danger" onclick = "location.href = '/myintro/delete/{{self_intro.id}}'">삭제하기</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </p>
+                    <br>
+                    {% if request.session.user %}
+                    <a class="btn btn-outline-dark" style="float: right;" href="/function"><i class="fas fa-pen"></i>&nbsp;자기소개서 등록</a>
+                    {% else %}
+                    <a class="btn btn-outline-dark" style="float: right;" href="/login"><i class="fas fa-pen"></i>&nbsp;자기소개서 등록</a>
+                    {% endif %}
+                    <br><br>
+                    <div class="row">
+                        <div class="col">
+                            <ul class="pagination justify-content-center">
+                                {% if self_intros.has_previous %}
+                                <li class = "page-item"><a class = "page-link" href = "?p={{self_intros.previous_page_number}}">이전으로</a></li>
+                                {% else %}
+                                <li class = "page-item disabled"><a class = "page-link disabled" href = "#">이전으로</a></li>
+                                {% endif %}
+                                <li class = "page-item active"><a class = "page-link">{{self_intros.number}}/{{self_intros.paginator.num_pages}}</a></li>
+                                {% if self_intros.has_next %}
+                                <li class = "page-item"><a class = "page-link" href = "?p={{self_intros.next_page_number}}">다음으로</a></li>
+                                {% else %}
+                                <li class = "page-item disabled"><a class = "page-link disabled" href = "#">다음으로</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

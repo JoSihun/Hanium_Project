@@ -1,0 +1,42 @@
+{% extends "app/base_my.html" %}
+
+{% block content %}
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-xs-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="paenl-title">
+                            &nbsp;<span class="fas fa-edit"></span>
+                            &nbsp;<font size="4">내 정보</font>
+                        </h3>
+                    </div>
+                    <br>
+                    <div class="panel-body">
+                        <tbody>
+                        <form action="" method="POST" encType="multiplart/form-data">
+                            {% csrf_token %}
+                            <tr>
+                                <th>사용자 이름</th>
+                                <td><input style="background-color: #FFFFFF;" type="text" value="{{username}}" name="username" class="form-control" readonly/></td>
+                            </tr>
+                            <br>
+                            <tr>
+                                <th>Email</th>
+                                <td><input style="background-color: #FFFFFF;" type="email" value="{{email}}" name="useremail" class="form-control" readonly/></td>
+                            </tr>
+                            <br>
+                            <tr>
+                                <td colspan="2">
+                                    <button type = "button" class = "btn btn-primary" onclick = "location.href = '/myinfo/modify'">비밀번호 변경</button>
+                                </td>
+                            </tr>
+                        </form>
+                        </tbody>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
