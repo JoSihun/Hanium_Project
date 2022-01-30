@@ -1,0 +1,67 @@
+{% extends "app/base_my.html" %}
+
+{% block content %}
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8 col-xs-8">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="paenl-title">
+                                        &nbsp;<span class="fas fa-edit"></span>
+                                        &nbsp;<font size="4">자유게시판</font>
+                                    </h3>
+                                </div>
+                                <p>
+                                <div class="panel-body"></div>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th nowrap>번호</th>
+                                            <th nowrap>제목</th>
+                                            <th nowrap>작성자</th>
+                                            <th nowrap>작성일</th>
+                                            <th nowrap>조회수</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for post in posts %}
+                                        <tr onclick = "location.href = '/freeboard/detail/{{post.id}}'">
+                                        <td>{{post.id}}</td>
+                                        <td>{{post.title}}</td>
+                                        <td>{{post.writer}}</td>
+                                        <td nowrap>{{post.registered_date}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                </p>
+                                <br>
+                                {% if request.session.user %}
+                                <a class="btn btn-outline-dark" style="float: right;" href="/freeboard/writing"><i class="fas fa-pen"></i>&nbsp;글쓰기</a>
+                                {% else %}
+                                <a class="btn btn-outline-dark" style="float: right;" href="/login"><i class="fas fa-pen"></i>&nbsp;글쓰기</a>
+                                {% endif %}
+                                <br><br>
+                                <div class="row">
+                                    <div class="col">
+                                        <ul class="pagination justify-content-center">
+                                            {% if posts.has_previous %}
+                                            <li class = "page-item"><a class = "page-link" href = "?p={{posts.previous_page_number}}">이전으로</a></li>
+                                            {% else %}
+                                            <li class = "page-item disabled"><a class = "page-link disabled" href = "#">이전으로</a></li>
+                                            {% endif %}
+                                            <li class = "page-item active"><a class = "page-link">{{posts.number}}/{{posts.paginator.num_pages}}</a></li>
+                                            {% if posts.has_next %}
+                                            <li class = "page-item"><a class = "page-link" href = "?p={{posts.next_page_number}}">다음으로</a></li>
+                                            {% else %}
+                                            <li class = "page-item disabled"><a class = "page-link disabled" href = "#">다음으로</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock content %}

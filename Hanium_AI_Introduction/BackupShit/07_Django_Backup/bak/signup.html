@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="masthead ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div id="second">
+                    <div class="myform form ">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>Create your account</h1>
+                            </div>
+                            <div class = "row mt-5">  <!--에러메세지 추가한부분 -->
+                                <div class = "col-12">
+                                    {{ error }}
+                                </div>
+                            </div>                  <!--에러메세지 추가한부분 -->
+                        </div>
+                        <br>
+                        <form autocomplete="off" id="signup-form" class="setup-form js-signup-form js-octocaptcha-parent" action="#success_signup" accept-charset="" ="UTF-8" method="post">
+                        <dl class="form-group my-3 required">
+                            <dt class="input-label">
+                                <label name="user[login]" autocapitalize="off" autofocus="autofocus" required="required" for="user_login">Name</label>
+                            </dt>
+                            <dd>
+                                <input name="user[login]" autocapitalize="off" autofocus="autofocus" required="" class="form-control input py-1" type="text" id="user_login" autocomplete="off" spellcheck="false" aria-describedby="input-check-6750 " placeholder="Enter Name">
+                            </dd>
+                        </dl>
+                        <dl class="form-group my-3 required">
+                            <dt class="input-label">
+                                <label name="user[email]" autocapitalize="off" required="required" for="user_email">Email address</label>
+                            </dt>
+                            <dd>
+                                <input name="user[email]" autocapitalize="off" required="" class="form-control input py-1" value="" type="text" id="user_email" autocomplete="off" spellcheck="false" placeholder="Enter email address">
+                            </dd>
+                        </dl>
+                        <password-strength minimum-character-count="8" passphrase-length="15" invalid-message="Password is invalid." error-class="text-red text-bold" pass-class="text-green">
+                            <dl class="form-group mt-3 mb-2 required">
+                                <dt class="input-label">
+                                    <label name="user[password]" required="required" for="user_password">Password</label>
+                                </dt>
+                                <dd>
+                                    <input name="user[password]" required="required" class="form-control input py-1" type="password" id="user_password" autocomplete="off" spellcheck="false" aria-describedby=" " placeholder="Enter password">
+                                </dd>
+                            </dl>
+                        </password-strength>
+                        <dl class="form-group my-3">
+                            <dt class="input-label mb-n2">
+                                <label>Email preferences</label>
+                            </dt>
+                            <dd>
+                                <div class="form-checkbox">
+                                    <label class="text-normal mt-2 text-gray" data-ga-click="Sign up, send email">
+                                        <input type="checkbox" name="all_emails" id="all_emails" value="true" data-ga-click="Signup funnel entrance, click, select checkbox marketing opt-in">
+                                        Send me occasional product updates, announcements, and offers.
+                                    </label>
+                                </div>
+                            </dd>
+                        </dl>
+                        <div class="my-3">
+                            <button class="btn-mktg signup-btn btn btn-info btn-block  js-octocaptcha-form-submit width-full" type="submit" data-disable-invalid="" data-disable-with="Creating account…" id="signup_button" data-ga-click="Signup funnel entrance, click, text: Create account;">Create account
+                            </button>
+                        </div>
+                        </form>
+                        <div class="col-md-12 ">
+                            <div class="form-group">
+                                <p class="text-center">Already have an account? <a href="login.html" id="signin"> Sign in</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock content %}

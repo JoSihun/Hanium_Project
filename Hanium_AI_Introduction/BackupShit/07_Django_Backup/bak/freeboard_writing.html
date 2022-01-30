@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="masthead ">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-xs-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="paenl-title">
+                                &nbsp;<span class="fas fa-edit"></span>
+                                &nbsp;<font size="5">글쓰기</font>
+                            </h3>
+                        </div>
+                        <br>
+                        <div class="panel-body">
+                            <tbody>
+                            <form action="" method="POST" encType="multiplart/form-data">
+                                {% csrf_token %}
+                                <tr>
+                                    <th>제목</th>
+                                    <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control"/></td>
+                                </tr>
+                                <br>
+                                <tr>
+                                    <th>내용</th>
+                                    <td><textarea cols="10" rows='15' placeholder="내용을 입력하세요. " name="contents" class="form-control"></textarea></td>
+                                </tr>
+                                <br>
+                                <tr>
+                                    <td colspan="2">
+                                        <button type = "submit" class = "btn btn-primary" style ="float: right;" onclick="javascript:location.href='/freeboard'" class="pull-right"/><i class="fas fa-pen"></i>등록</button>
+                                        <button type = "button" class = "btn btn-dark" onclick = "location.href = '/freeboard'">돌아가기</button>
+                                        <button type = "button" class = "btn btn-dark" onclick = "javascript:location.href='/freeboard_writing'">Reset</button>
+                                        <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+                                        <a class="btn btn-default" type="reset"> reset </a>
+                                        <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+                                    </td>
+                                </tr>
+                            </form>
+                            </tbody>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock content %}

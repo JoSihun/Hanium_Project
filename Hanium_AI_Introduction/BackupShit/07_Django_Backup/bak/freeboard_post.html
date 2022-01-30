@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+{{post.increase_hits}}
+<header class="masthead ">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-xs-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="paenl-title">
+                                &nbsp;<span class="fas fa-edit"></span>
+                                &nbsp;<font size="5">자유게시판</font>
+                            </h3>
+                        </div>
+                        <p>
+                        <div class="panel-body"></div>
+                        <div class = "row mt-5">
+                            <div class = "col-12">
+                                <div class = "form-group">
+                                    <label for = "title">제목</label>
+                                    <input style="background-color: #FFFFFF;" type = "text" class = "form-control" id = "title" value = "{{post.title}}" readonly>
+                                    <label for = "writer">작성자</label>
+                                    <input style="background-color: #FFFFFF;" type = "text" class = "form-control" id = "writer" value = "{{post.name}}" readonly>
+                                    <label for = "writer">조회수</label>
+                                    <input style="background-color: #FFFFFF;" type = "text" class = "form-control" id = "hits" value = "{{post.hits}}" readonly>
+                                    <label for = "contents">내용</label>
+                                    <textarea rows = '15' style="background-color: #FFFFFF;" class ="form-control" readonly>{{post.contents}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        </p>
+                        <br>
+                        <button type = "button" class = "btn btn-dark" onclick = "location.href = '/freeboard'">돌아가기</button>
+                        <a class="btn btn-primary" style="float: right;" href="/freeboard_writing"><i class="fas fa-pen"></i>&nbsp;글쓰기</a>
+                        <a class="btn btn-danger" style="float: right;" href="/freeboard_delete/{{post.id}}"><i class="fas fa-pen"></i>&nbsp;삭제</a>
+                        <a class="btn btn-info" style="float: right;" href="/freeboard_edit/{{post.id}}"><i class="fas fa-pen"></i>&nbsp;수정</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock content %}

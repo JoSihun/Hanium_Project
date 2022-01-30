@@ -1,4 +1,3 @@
 Github측에서 Repository가 1GB를 초과하는 경우,
 크기를 줄이라는 경고메일을 전송할수 있다고 하여
-해당 관련파일은 구글 공유 드라이브에 
-Hanium_AI_Introduction.zip으로 백업하였음을 알림.
+해당 관련파일은 분할압축 Hanium_AI_Introduction.7z으로 백업하였음을 알림.

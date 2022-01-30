@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="masthead ">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-xs-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="paenl-title">
+                                <span class="fas fa-edit"></span>
+                                <font size="5">게시글 수정</font>
+                            </h3>
+                        </div>
+                        <br>
+                        <div class="panel-body">
+                            <tbody>
+                            <form action="" method="POST" encType="multiplart/form-data">
+                                {% csrf_token %}
+                                <label for = "title">제목</label>
+                                <input type = "text" class = "form-control" id = "title" value = "{{post.title}}" name="title">
+                                <label for = "contents" id="contents">내용</label>
+                                <textarea class ="form-control" rows="15" name="contents" >{{post.contents}}</textarea>
+                                <br>
+                                <tr>
+                                    <td colspan="2">
+                                        <button type = "submit" class = "btn btn-info" style = "float: right;"/><i class="fas fa-pen"></i>수정</button>
+                                        <button type = "button" class = "btn btn-dark" onclick = "location.href = '/questionboard_post/{{post.id}}'">돌아가기</button>
+                                        <!-- <a class="btn btn-default" onclick="sendData()"> 등록 </a>
+                                        <a class="btn btn-default" type="reset"> reset </a>
+                                        <a class="btn btn-default" onclick="javascript:location.href='list.jsp'">글 목록으로...</a> -->
+                                    </td>
+                                </tr>
+                            </form>
+                            </tbody>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock content %}
