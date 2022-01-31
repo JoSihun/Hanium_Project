@@ -21,7 +21,7 @@ Artificial Intelligence Self-Introduction Analysis for 2020 Hanium Project.
 - [참조](#참조)
 
 ## 주요 산출물
-![슬라이드2](https://user-images.githubusercontent.com/59362257/151782796-6a6c6d5a-c39d-400e-8706-507ca4f0b7d4.JPG)
+![슬라이드2](https://user-images.githubusercontent.com/59362257/151782796-6a6c6d5a-c39d-400e-8706-507ca4f0b7d4.JPG)  
 [목차](#목차)
 
 ## 시장 및 기술 동향 분석
