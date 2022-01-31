@@ -8,7 +8,7 @@ Artificial Intelligence Self-Introduction Analysis for 2020 Hanium Project.
 - [요구사항 정의서](#요구사항-정의서)
 - [서비스 구성도](#서비스-구성도)
 - [서비스 흐름도](#서비스-흐름도)
-- [UI/UX 정의서](#ui-ux-정의서)
+- [UI/UX 정의서](#uiux-정의서)
 - [메뉴 구성도](#메뉴-구성도)
 - [화면 설계서](#화면-설계서)
 - [엔티티관계도 ERD](#엔티티관계도-erd)
@@ -16,7 +16,7 @@ Artificial Intelligence Self-Introduction Analysis for 2020 Hanium Project.
 - [알고리즘 명세 및 상세](#알고리즘-명세-및-상세)
 - [프로그램 목록](#프로그램-목록)
 - [데이터 수집처리 정의서](#데이터-수집처리-정의서)
-- [테이블 정의서(ERD)](#테이블-정의서-erd-)
+- [테이블 정의서(ERD)](#테이블-정의서erd)
 - [핵심 소스코드](#핵심-소스코드)
 - [참조](#참조)
 
